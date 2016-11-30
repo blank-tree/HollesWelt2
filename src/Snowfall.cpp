@@ -19,16 +19,8 @@ Snowflake* Snowfall::spawn() {
         next = 0;
     }
     
-    float x = (rand() % ofGetWindowWidth()) - (ofGetWindowWidth() / 2);
-    float z = (rand() % ofGetWindowWidth()) - (ofGetWindowWidth() / 2);
-    
     Snowflake* s = flakes[next];
-    s->setPosition(x, FLAKE_START_Y, z);
-    s->restingCounter = 0;
-    s->startingCounter = 0;
-    s->setRadius(10);
-    s->setResolution(10);
-    s->active = true;
+    s->setup();
     
     next++;
     
@@ -39,23 +31,7 @@ void Snowfall::update() {
     for(int i = 0; i < FLAKE_COUNT; i++) {
         Snowflake* s = flakes[i];
         
-        if(!s->active) {
-            continue;
-        }
-        
-        if (s->getY() < 0) {
-            s->restingCounter++;
-            
-            if (s->restingCounter > FLAKE_LIFETIME) {
-                s->active = false;
-                continue;
-            }
-            
-            s->restingCounter++;
-            continue;
-        }
-        
-        s->setPosition(s->getX(), s->getY() - 10, s->getZ());
+        s->update();
     }
 }
 
