@@ -5,19 +5,19 @@
 #include "Snowfall.h"
 #include "Pillow.h"
 
-enum states {IDLE, ENTER, GOLD, LEAVE};
+enum States {IDLE, SHAKE, CLIMAX, RESET};
 
 class Statehandler {
 
 public:
-    states state;
+    States state;
     
     void setup();
     void update(Snowfall*, Pillow*);
     
 private:
     void updateIdle(Snowfall*, Pillow*);
-    void updateEnter(Snowfall*, Pillow*);
-    void updateGold(Snowfall*, Pillow*);
-    void updateLeave(Snowfall*, Pillow*);
+    void updateShake(Snowfall*, Pillow*);
+    void updateClimax(Snowfall*, Pillow*);
+    void updateReset(Snowfall*, Pillow*);
 };

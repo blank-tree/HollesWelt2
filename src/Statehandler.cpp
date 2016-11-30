@@ -9,38 +9,41 @@ void Statehandler::update(Snowfall* snowfall, Pillow* pillow) {
         case IDLE:
             updateIdle(snowfall, pillow);
             break;
-        case ENTER:
-            updateEnter(snowfall, pillow);
+        case SHAKE:
+            updateShake(snowfall, pillow);
             break;
-        case GOLD:
-            updateGold(snowfall, pillow);
+        case CLIMAX:
+            updateClimax(snowfall, pillow);
             break;
-        case LEAVE:
-            updateLeave(snowfall, pillow);
+        case RESET:
+            updateReset(snowfall, pillow);
             break;
     }
 }
 
 void Statehandler::updateIdle(Snowfall* snowfall, Pillow* pillow) {
     // TODO: Map angles to cloud movements.
-    // TODO: Change to Enter on success.
+    // TODO: Map force to snow rate.
+    // TODO: Change to SHAKE on success (over 90 degrees).
     
-    snowfall->spawnRate = 0.05;
+    // snowfall->spawnRate = 0.05;
     snowfall->spawnRate = pillow->forceLeft * pillow->forceRight * 10;
 }
 
-void Statehandler::updateEnter(Snowfall* snowfall, Pillow* pillow) {
+void Statehandler::updateShake(Snowfall* snowfall, Pillow* pillow) {
     // TODO: Map force to snow rate.
-    // TODO: Change to GOLD on success.
-    // TODO: Change to Leave on fail.
+    // TODO: Map angles to wind.
+    // TODO: Map total to goldness.
+    // TODO: Change to CLIMAX on success.
+    // TODO: Change to RESET on fail.
 }
 
-void Statehandler::updateGold(Snowfall* snowfall, Pillow* pillow) {
+void Statehandler::updateClimax(Snowfall* snowfall, Pillow* pillow) {
     // TODO: Flash gold.
     // TODO: Change to LEAVE.
 }
 
-void Statehandler::updateLeave(Snowfall* snowfall, Pillow* pillow) {
+void Statehandler::updateReset(Snowfall* snowfall, Pillow* pillow) {
     // TODO: Reset sim.
     // TODO: Change to IDLE.
 }
