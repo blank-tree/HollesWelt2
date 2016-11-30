@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 #include "Plane.h"
-#define LAND_COUNT 30
+#define LAND_COUNT 10
 
 class Landscape {
     
@@ -16,6 +16,8 @@ public:
     void setup();
     void update();
     void draw();
+    
+    void colorGold(int amount);
     
     
 private:

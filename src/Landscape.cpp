@@ -45,3 +45,15 @@ void Landscape::draw() {
     }
 }
 
+void Landscape::colorGold(int amount) {
+    for (int i = 0; i < LAND_COUNT; i++) {
+        Plane* p = land[i];
+        
+        if (!p->active) {
+            continue;
+        }
+        
+        p->fade(i < amount);
+    }
+}
+
