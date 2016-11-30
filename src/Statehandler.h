@@ -2,19 +2,22 @@
 
 #include "ofMain.h"
 
+#include "Snowfall.h"
+#include "Pillow.h"
+
 enum states {IDLE, ENTER, GOLD, LEAVE};
 
 class Statehandler {
 
 public:
-    
-    bool active;
-    states currentState;
+    states state;
     
     void setup();
-    void update();
-    void nextState();
+    void update(Snowfall*, Pillow*);
     
-    int getStateNo();
-    
+private:
+    void updateIdle(Snowfall*, Pillow*);
+    void updateEnter(Snowfall*, Pillow*);
+    void updateGold(Snowfall*, Pillow*);
+    void updateLeave(Snowfall*, Pillow*);
 };

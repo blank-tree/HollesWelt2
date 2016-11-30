@@ -10,13 +10,15 @@
 class Snowfall {
     
 public:
-    Snowflake* flakes[FLAKE_COUNT];
-    int next = 0;
-    
-    Snowflake* spawn();
+    float spawnRate = 0;
+    ofVec3f wind;
     
     void setup();
-    void update(ofVec3f);
+    void update();
     void draw();
     
+private:
+    Snowflake* flakes[FLAKE_COUNT];
+    int next = 0;
+    float counter = 0;
 };

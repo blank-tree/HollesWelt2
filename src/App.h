@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 
+#include "Statehandler.h"
 #include "Pillow.h"
 #include "Snowfall.h"
 
@@ -11,10 +12,10 @@ class App : public ofBaseApp{
         ofEasyCam debugCam;
         ofCamera mainCam;
     
+        Statehandler statehandler;
+    
         Pillow pillow;
         Snowfall snowfall;
-    
-        ofVec3f wind;
     
 		void setup();
 		void update();
