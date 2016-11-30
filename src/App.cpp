@@ -22,6 +22,7 @@ void App::draw(){
     // draw debug info
     if(debug) {
         ofDrawAxis(100);
+        ofDrawArrow(mainCam.getPosition(), mainCam.getOrientationEuler(), 20);
     }
     
     // draw snowfall
