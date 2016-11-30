@@ -2,8 +2,6 @@
 
 void Cloud::setup() {
     
-    active = false;
-    
 }
 
 void Cloud::update() {
