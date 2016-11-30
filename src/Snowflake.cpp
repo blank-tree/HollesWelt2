@@ -13,8 +13,6 @@ void Snowflake::setup() {
     restingCounter = 0;
     startingCounter = 0;
     
-    setRadius(10);
-    setResolution(10);
     active = true;
     
     xRange = ofGetWindowWidth();
@@ -24,10 +22,10 @@ void Snowflake::setup() {
     this->setPosition(decideStart());
     movement = this->decideMovement();
     
-    this->update();
+    this->update(ofVec3f(0, 0, 0));
 }
 
-void Snowflake::update() {
+void Snowflake::update(ofVec3f wind) {
     if(!active) {
         return;
     }
@@ -44,8 +42,27 @@ void Snowflake::update() {
         return;
     }
     
-    this->setPosition(this->getPosition() + movement);
+    this->setPosition(this->getPosition() + movement + wind);
 
+}
+
+void Snowflake::draw() {
+    ofNoFill();
+    ofSetLineWidth(1);
+    ofSetColor(255, 255, 255);
+    
+    ofVec3f pos = getPosition();
+    
+    ofPushMatrix();
+    ofRotateY(90);
+    ofTranslate(pos.x, pos.y, pos.z);
+    
+    ofDrawBezier(0, 0, 2.8, 0, 5, 2.2, 5, 5);
+    ofDrawBezier(5, 5, 5, 7.8, 2.8, 16.4, 0, 16.4);
+    ofDrawBezier(0, 16.4, -2.8, 16.4, -5, 7.7, -5, 5);
+    ofDrawBezier(-5, 5, -5, 2.2, -2.8, 0, 0, 0);
+    
+    ofPopMatrix();
 }
 
 // PRIVATE ---------------------------------

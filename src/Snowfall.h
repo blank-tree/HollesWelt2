@@ -16,7 +16,7 @@ public:
     Snowflake* spawn();
     
     void setup();
-    void update();
+    void update(ofVec3f);
     void draw();
     
 };

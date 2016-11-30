@@ -19,11 +19,11 @@ Snowflake* Snowfall::spawn() {
     return s;
 }
 
-void Snowfall::update() {
+void Snowfall::update(ofVec3f wind) {
     for(int i = 0; i < FLAKE_COUNT; i++) {
         Snowflake* s = flakes[i];
         
-        s->update();
+        s->update(wind);
     }
 }
 
