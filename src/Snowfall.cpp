@@ -26,7 +26,7 @@ Snowflake* Snowfall::activate() {
     }
     
     Snowflake* s = flakes[nextActivation];
-    s->setPosition(0, 0, 0);
+    s->setPosition(0, FLAKE_START_Y, 0);
     s->restingCounter = 0;
     s->startingCounter = 0;
     s->setRadius(10);
@@ -46,7 +46,7 @@ void Snowfall::update() {
             continue;
         }
         
-        if (s->getY() >= ofGetWindowHeight()) {
+        if (s->getY() < 0) {
             s->restingCounter++;
             
             if (s->restingCounter > FLAKE_LIFETIME) {
@@ -58,7 +58,7 @@ void Snowfall::update() {
             continue;
         }
         
-        s->setPosition(s->getX(), s->getY() + 10, s->getZ());
+        s->setPosition(s->getX(), s->getY() - 10, s->getZ());
     }
 }
 
