@@ -11,6 +11,7 @@
 		52A2F20D1DEF4A9E006B2F4E /* Snowflake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52A2F20A1DEF4A9E006B2F4E /* Snowflake.cpp */; };
 		52A2F2111DEF55F3006B2F4E /* Pillow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52A2F20F1DEF55F3006B2F4E /* Pillow.cpp */; };
 		C4A948381DEF705C003477C9 /* Plane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C4A948361DEF705C003477C9 /* Plane.cpp */; };
+		C4A9483C1DEF7594003477C9 /* Landscape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C4A9483A1DEF7594003477C9 /* Landscape.cpp */; };
 		C4BF36A41DEF4C7400FDF472 /* Sky.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C4BF36A21DEF4C7400FDF472 /* Sky.cpp */; };
 		C4BF36A71DEF4CE800FDF472 /* Cloud.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C4BF36A51DEF4CE800FDF472 /* Cloud.cpp */; };
 		C4BF36AA1DEF4FD300FDF472 /* Statehandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C4BF36A81DEF4FD300FDF472 /* Statehandler.cpp */; };
@@ -58,6 +59,8 @@
 		C4A948361DEF705C003477C9 /* Plane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Plane.cpp; sourceTree = "<group>"; };
 		C4A948371DEF705C003477C9 /* Plane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plane.h; sourceTree = "<group>"; };
 		C4A948391DEF72D8003477C9 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		C4A9483A1DEF7594003477C9 /* Landscape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Landscape.cpp; sourceTree = "<group>"; };
+		C4A9483B1DEF7594003477C9 /* Landscape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Landscape.h; sourceTree = "<group>"; };
 		C4BF36A21DEF4C7400FDF472 /* Sky.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sky.cpp; sourceTree = "<group>"; };
 		C4BF36A31DEF4C7400FDF472 /* Sky.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sky.h; sourceTree = "<group>"; };
 		C4BF36A51DEF4CE800FDF472 /* Cloud.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cloud.cpp; sourceTree = "<group>"; };
@@ -125,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
+				C4A948391DEF72D8003477C9 /* config.h */,
 				E4B69E1F0A3A1BDC003C02F2 /* App.h */,
 				E4B69E1E0A3A1BDC003C02F2 /* App.cpp */,
 				52A2F2091DEF4A9E006B2F4E /* Snowfall.h */,
@@ -141,7 +145,8 @@
 				52A2F20F1DEF55F3006B2F4E /* Pillow.cpp */,
 				C4A948371DEF705C003477C9 /* Plane.h */,
 				C4A948361DEF705C003477C9 /* Plane.cpp */,
-				C4A948391DEF72D8003477C9 /* config.h */,
+				C4A9483B1DEF7594003477C9 /* Landscape.h */,
+				C4A9483A1DEF7594003477C9 /* Landscape.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -243,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52A2F20D1DEF4A9E006B2F4E /* Snowflake.cpp in Sources */,
+				C4A9483C1DEF7594003477C9 /* Landscape.cpp in Sources */,
 				C4BF36A71DEF4CE800FDF472 /* Cloud.cpp in Sources */,
 				52A2F2111DEF55F3006B2F4E /* Pillow.cpp in Sources */,
 				C4A948381DEF705C003477C9 /* Plane.cpp in Sources */,
