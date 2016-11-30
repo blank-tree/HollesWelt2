@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 
+#include "Pillow.h"
 #include "Snowfall.h"
 
 class App : public ofBaseApp{
@@ -10,6 +11,7 @@ class App : public ofBaseApp{
         ofEasyCam debugCam;
         ofCamera mainCam;
     
+        Pillow pillow;
         Snowfall snowfall;
     
 		void setup();

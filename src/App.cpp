@@ -6,11 +6,14 @@ void App::setup(){
     mainCam.setPosition(1500, ofGetWindowWidth() / 2, 0);
     mainCam.setOrientation(ofVec3f(0, 90, 0));
     
+    pillow.setup();
     snowfall.setup();
 }
 
 void App::update(){
     snowfall.spawn();
+    
+    pillow.update();
     snowfall.update();
 }
 
