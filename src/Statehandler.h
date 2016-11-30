@@ -15,6 +15,8 @@ public:
     void setup();
     void update(Snowfall*, Pillow*);
     
+    string stateString();
+    
 private:
     void updateIdle(Snowfall*, Pillow*);
     void updateShake(Snowfall*, Pillow*);

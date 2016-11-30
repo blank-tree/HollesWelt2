@@ -47,3 +47,16 @@ void Statehandler::updateReset(Snowfall* snowfall, Pillow* pillow) {
     // TODO: Reset sim.
     // TODO: Change to IDLE.
 }
+
+string Statehandler::stateString() {
+    switch(state) {
+        case IDLE:
+            return "Idle";
+        case SHAKE:
+            return "Shake";
+        case CLIMAX:
+            return "Climax";
+        case RESET:
+            return "Reset";
+    }
+}
