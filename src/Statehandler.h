@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 
-enum states {IDLE, ENTER, GOLDENVIRONMENT, GOLDSNOW, LEAVE};
+enum states {IDLE, ENTER, GOLD, LEAVE};
 
 class Statehandler {
 
