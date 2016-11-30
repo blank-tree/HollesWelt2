@@ -3,6 +3,9 @@
 void App::setup(){
     ofBackground(0, 0, 0);
     
+    mainCam.setPosition(1500, ofGetWindowWidth() / 2, 0);
+    mainCam.setOrientation(ofVec3f(0, 90, 0));
+    
     snowfall.setup();
 }
 
@@ -22,7 +25,8 @@ void App::draw(){
     // draw debug info
     if(debug) {
         ofDrawAxis(100);
-        ofDrawArrow(mainCam.getPosition(), mainCam.getOrientationEuler(), 20);
+    
+        mainCam.draw();
     }
     
     // draw snowfall
