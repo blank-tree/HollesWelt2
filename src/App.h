@@ -3,7 +3,6 @@
 #include "ofMain.h"
 
 class App : public ofBaseApp{
-
 	public:
 		void setup();
 		void update();
@@ -20,5 +19,4 @@ class App : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-		
 };
