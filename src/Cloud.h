@@ -6,6 +6,8 @@ class Cloud {
     
 public:
     
+    bool active;
+    
     
     void setup();
     void update();
