@@ -44,8 +44,8 @@ void Snowflake::update() {
         return;
     }
     
-    this->setPosition(this->getPosition() * movement);
-    cout<<getPosition() * movement;
+    this->setPosition(this->getPosition() + movement);
+
 }
 
 // PRIVATE ---------------------------------
@@ -58,8 +58,8 @@ ofVec3f Snowflake::decideStart() {
 }
 
 ofVec3f Snowflake::decideMovement() {
-    float targetX = (ofRandom(1) - 0.5) / 100;
-    float targetY = -0.01;
-    float targetZ = (ofRandom(1) - 0.5) / 100;
+    float targetX = (ofRandom(1) - 0.5) / 1;
+    float targetY = -2;
+    float targetZ = (ofRandom(1) - 0.5) / 1;
     return ofVec3f(targetX, targetY, targetZ);
 }
