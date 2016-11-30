@@ -8,13 +8,17 @@ void App::setup(){
     
     pillow.setup();
     snowfall.setup();
+    
+    wind = ofVec3f(0, 0, 0);
 }
 
 void App::update(){
     snowfall.spawn();
     
+    // TODO: Caluclate wind;
+    
     pillow.update();
-    snowfall.update();
+    snowfall.update(wind);
 }
 
 void App::draw(){

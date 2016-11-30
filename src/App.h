@@ -14,6 +14,8 @@ class App : public ofBaseApp{
         Pillow pillow;
         Snowfall snowfall;
     
+        ofVec3f wind;
+    
 		void setup();
 		void update();
 		void draw();

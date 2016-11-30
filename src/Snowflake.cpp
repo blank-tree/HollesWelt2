@@ -24,10 +24,10 @@ void Snowflake::setup() {
     this->setPosition(decideStart());
     movement = this->decideMovement();
     
-    this->update();
+    this->update(ofVec3f(0, 0, 0));
 }
 
-void Snowflake::update() {
+void Snowflake::update(ofVec3f wind) {
     if(!active) {
         return;
     }
@@ -44,7 +44,7 @@ void Snowflake::update() {
         return;
     }
     
-    this->setPosition(this->getPosition() + movement);
+    this->setPosition(this->getPosition() + movement + wind);
 
 }
 
