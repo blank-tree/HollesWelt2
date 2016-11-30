@@ -2,10 +2,13 @@
 
 void App::setup(){
     ofBackground(0, 0, 0);
+    
+    snowfall.setup();
 }
 
 void App::update(){
-
+    snowfall.spawn();
+    snowfall.update();
 }
 
 void App::draw(){
@@ -19,7 +22,11 @@ void App::draw(){
     // draw debug info
     if(debug) {
         ofDrawAxis(100);
+        ofDrawArrow(mainCam.getPosition(), mainCam.getOrientationEuler(), 20);
     }
+    
+    // draw snowfall
+    snowfall.draw();
     
     // finish cam
     if(debug) {

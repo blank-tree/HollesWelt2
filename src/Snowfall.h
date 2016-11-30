@@ -6,16 +6,15 @@
 
 #define FLAKE_COUNT 10000
 #define FLAKE_LIFETIME 500
-#define FLAKE_START_Y 100
+#define FLAKE_START_Y 1000
 
 class Snowfall {
     
 public:
     Snowflake* flakes[FLAKE_COUNT];
-    int nextActivation = 0;
+    int next = 0;
     
-    void spawn();
-    Snowflake* activate();
+    Snowflake* spawn();
     
     void setup();
     void update();

@@ -2,11 +2,15 @@
 
 #include "ofMain.h"
 
+#include "Snowfall.h"
+
 class App : public ofBaseApp{
 	public:
         bool debug = false;
         ofEasyCam debugCam;
         ofCamera mainCam;
+    
+        Snowfall snowfall;
     
 		void setup();
 		void update();
