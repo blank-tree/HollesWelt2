@@ -3,7 +3,7 @@
 void Statehandler::setup() {
     
     active = false;
-    stateNo = 0;
+    currentState = IDLE;
     
 }
 

@@ -2,12 +2,14 @@
 
 #include "ofMain.h"
 
+enum states {IDLE, ENTER, GOLDENVIRONMENT, GOLDSNOW, LEAVE};
+
 class Statehandler {
-    
+
 public:
     
     bool active;
-    int stateNo;
+    states currentState;
     
     void setup();
     void update();
