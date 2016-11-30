@@ -15,7 +15,7 @@ void App::setup(){
 void App::update(){
     pillow.update();
     
-    statehandler.update(&snowfall, &pillow);
+    statehandler.update(&snowfall, &pillow, &flash);
     
     snowfall.update();
 }
@@ -23,6 +23,9 @@ void App::update(){
 void App::draw(){
     // draw 2d debug info
     if(debug) {
+        ofSetColor(255, 255, 255);
+        ofFill();
+        
         ofDrawBitmapString("Forces: " + ofToString(pillow.forceLeft) + " " + ofToString(pillow.forceRight), 20, 30);
         ofDrawBitmapString("Angles: " + ofToString(pillow.angleLeft) + " " + ofToString(pillow.angleRight), 20, 50);
         ofDrawBitmapString("State: " + statehandler.stateString(), 20, 70);
@@ -52,6 +55,9 @@ void App::draw(){
     } else {
         mainCam.end();
     }
+    
+    // draw flash
+    flash.draw();
 }
 
 void App::keyPressed(int key){

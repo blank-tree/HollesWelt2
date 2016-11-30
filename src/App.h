@@ -16,6 +16,7 @@ class App : public ofBaseApp{
     
         Pillow pillow;
         Snowfall snowfall;
+        Flash flash;
     
 		void setup();
 		void update();

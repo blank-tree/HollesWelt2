@@ -10,6 +10,7 @@
 		52A2F20C1DEF4A9E006B2F4E /* Snowfall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52A2F2081DEF4A9E006B2F4E /* Snowfall.cpp */; };
 		52A2F20D1DEF4A9E006B2F4E /* Snowflake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52A2F20A1DEF4A9E006B2F4E /* Snowflake.cpp */; };
 		52A2F2111DEF55F3006B2F4E /* Pillow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52A2F20F1DEF55F3006B2F4E /* Pillow.cpp */; };
+		52A2F2181DEF933C006B2F4E /* Flash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52A2F2161DEF933C006B2F4E /* Flash.cpp */; };
 		C4A948381DEF705C003477C9 /* Plane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C4A948361DEF705C003477C9 /* Plane.cpp */; };
 		C4A9483C1DEF7594003477C9 /* Landscape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C4A9483A1DEF7594003477C9 /* Landscape.cpp */; };
 		C4BF36A41DEF4C7400FDF472 /* Sky.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C4BF36A21DEF4C7400FDF472 /* Sky.cpp */; };
@@ -56,6 +57,8 @@
 		52A2F20B1DEF4A9E006B2F4E /* Snowflake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Snowflake.h; sourceTree = "<group>"; };
 		52A2F20F1DEF55F3006B2F4E /* Pillow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pillow.cpp; sourceTree = "<group>"; };
 		52A2F2101DEF55F3006B2F4E /* Pillow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pillow.h; sourceTree = "<group>"; };
+		52A2F2161DEF933C006B2F4E /* Flash.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Flash.cpp; sourceTree = "<group>"; };
+		52A2F2171DEF933C006B2F4E /* Flash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flash.h; sourceTree = "<group>"; };
 		C4A948361DEF705C003477C9 /* Plane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Plane.cpp; sourceTree = "<group>"; };
 		C4A948371DEF705C003477C9 /* Plane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plane.h; sourceTree = "<group>"; };
 		C4A9483A1DEF7594003477C9 /* Landscape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Landscape.cpp; sourceTree = "<group>"; };
@@ -145,6 +148,8 @@
 				C4A948361DEF705C003477C9 /* Plane.cpp */,
 				C4A9483B1DEF7594003477C9 /* Landscape.h */,
 				C4A9483A1DEF7594003477C9 /* Landscape.cpp */,
+				52A2F2171DEF933C006B2F4E /* Flash.h */,
+				52A2F2161DEF933C006B2F4E /* Flash.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -253,6 +258,7 @@
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* App.cpp in Sources */,
 				C4BF36AA1DEF4FD300FDF472 /* Statehandler.cpp in Sources */,
+				52A2F2181DEF933C006B2F4E /* Flash.cpp in Sources */,
 				C4BF36A41DEF4C7400FDF472 /* Sky.cpp in Sources */,
 				52A2F20C1DEF4A9E006B2F4E /* Snowfall.cpp in Sources */,
 			);

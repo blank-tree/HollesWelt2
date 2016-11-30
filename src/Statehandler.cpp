@@ -1,27 +1,27 @@
 #include "Statehandler.h"
 
 void Statehandler::setup() {
-    state = IDLE;
+    state = CLIMAX;
 }
 
-void Statehandler::update(Snowfall* snowfall, Pillow* pillow) {
+void Statehandler::update(Snowfall* snowfall, Pillow* pillow, Flash* flash) {
     switch(state) {
         case IDLE:
-            updateIdle(snowfall, pillow);
+            updateIdle(snowfall, pillow, flash);
             break;
         case SHAKE:
-            updateShake(snowfall, pillow);
+            updateShake(snowfall, pillow, flash);
             break;
         case CLIMAX:
-            updateClimax(snowfall, pillow);
+            updateClimax(snowfall, pillow, flash);
             break;
         case RESET:
-            updateReset(snowfall, pillow);
+            updateReset(snowfall, pillow, flash);
             break;
     }
 }
 
-void Statehandler::updateIdle(Snowfall* snowfall, Pillow* pillow) {
+void Statehandler::updateIdle(Snowfall* snowfall, Pillow* pillow, Flash* flash) {
     // TODO: Map angles to cloud movements.
     // TODO: Map force to snow rate.
     // TODO: Change to SHAKE on success (over 90 degrees).
@@ -30,22 +30,31 @@ void Statehandler::updateIdle(Snowfall* snowfall, Pillow* pillow) {
     snowfall->spawnRate = pillow->forceLeft * pillow->forceRight * 10;
 }
 
-void Statehandler::updateShake(Snowfall* snowfall, Pillow* pillow) {
+void Statehandler::updateShake(Snowfall* snowfall, Pillow* pillow, Flash* flash) {
     // TODO: Map force to snow rate.
     // TODO: Map angles to wind.
-    // TODO: Map total to goldness.
+    // TODO: Map total to goldness (snow flakes, clouds, landscapes).
     // TODO: Change to CLIMAX on success.
     // TODO: Change to RESET on fail.
 }
 
-void Statehandler::updateClimax(Snowfall* snowfall, Pillow* pillow) {
-    // TODO: Flash gold.
-    // TODO: Change to LEAVE.
+void Statehandler::updateClimax(Snowfall* snowfall, Pillow* pillow, Flash* flash) {
+    if(counter < 1) {
+        counter += FLASH_SPEED_IN;
+        flash->intensity = counter;
+    } else if(counter < 2) {
+        counter += FLASH_SPEED_OUT;
+        flash->intensity = 1 - (counter - 1);
+    } else {
+        state = RESET;
+        return;
+    }
 }
 
-void Statehandler::updateReset(Snowfall* snowfall, Pillow* pillow) {
-    // TODO: Reset sim.
-    // TODO: Change to IDLE.
+void Statehandler::updateReset(Snowfall* snowfall, Pillow* pillow, Flash* flash) {
+    flash->intensity = 0;
+    
+    state = IDLE;
 }
 
 string Statehandler::stateString() {
