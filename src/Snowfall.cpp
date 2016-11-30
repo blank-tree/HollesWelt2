@@ -14,26 +14,23 @@ void Snowfall::setup() {
     }
 }
 
-void Snowfall::spawn() {
-    Snowflake* s = activate();
-    
-    s->setPosition(rand() % ofGetWindowWidth(), FLAKE_START_Y, rand() % ofGetWindowWidth());
-}
-
-Snowflake* Snowfall::activate() {
-    if(nextActivation >= FLAKE_COUNT) {
-        nextActivation = 0;
+Snowflake* Snowfall::spawn() {
+    if(next >= FLAKE_COUNT) {
+        next = 0;
     }
     
-    Snowflake* s = flakes[nextActivation];
-    s->setPosition(0, FLAKE_START_Y, 0);
+    float x = (rand() % ofGetWindowWidth()) - (ofGetWindowWidth() / 2);
+    float z = (rand() % ofGetWindowWidth()) - (ofGetWindowWidth() / 2);
+    
+    Snowflake* s = flakes[next];
+    s->setPosition(x, FLAKE_START_Y, z);
     s->restingCounter = 0;
     s->startingCounter = 0;
     s->setRadius(10);
     s->setResolution(10);
     s->active = true;
     
-    nextActivation++;
+    next++;
     
     return s;
 }

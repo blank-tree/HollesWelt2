@@ -12,10 +12,9 @@ class Snowfall {
     
 public:
     Snowflake* flakes[FLAKE_COUNT];
-    int nextActivation = 0;
+    int next = 0;
     
-    void spawn();
-    Snowflake* activate();
+    Snowflake* spawn();
     
     void setup();
     void update();
