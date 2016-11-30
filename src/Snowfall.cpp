@@ -6,20 +6,22 @@ void Snowfall::setup() {
     }
 }
 
-Snowflake* Snowfall::spawn() {
-    if(next >= FLAKE_COUNT) {
-        next = 0;
+void Snowfall::update() {
+    // spawn new flake if counter has been reached
+    counter += spawnRate;
+    if(counter >= 1) {
+        if(next >= FLAKE_COUNT) {
+            next = 0;
+        }
+        
+        Snowflake* s = flakes[next];
+        s->setup();
+        
+        next++;
+        counter = 0;
     }
     
-    Snowflake* s = flakes[next];
-    s->setup();
-    
-    next++;
-    
-    return s;
-}
-
-void Snowfall::update(ofVec3f wind) {
+    // update all flakes
     for(int i = 0; i < FLAKE_COUNT; i++) {
         Snowflake* s = flakes[i];
         
@@ -28,6 +30,7 @@ void Snowfall::update(ofVec3f wind) {
 }
 
 void Snowfall::draw() {
+    // TODO: Move drawing of flakes to Snowflake.
     for(int i = 0; i < FLAKE_COUNT; i++) {
         Snowflake* s = flakes[i];
         

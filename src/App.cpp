@@ -3,22 +3,21 @@
 void App::setup(){
     ofBackground(0, 0, 0);
     
-    mainCam.setPosition(1500, ofGetWindowWidth() / 2, 0);
+    mainCam.setPosition(1500, ofGetWindowWidth() / 3, 0);
     mainCam.setOrientation(ofVec3f(0, 90, 0));
+    
+    statehandler.setup();
     
     pillow.setup();
     snowfall.setup();
-    
-    wind = ofVec3f(0, 0, 0);
 }
 
 void App::update(){
-    snowfall.spawn();
-    
-    // TODO: Caluclate wind;
-    
     pillow.update();
-    snowfall.update(wind);
+    
+    statehandler.update(&snowfall, &pillow);
+    
+    snowfall.update();
 }
 
 void App::draw(){
