@@ -26,6 +26,7 @@ void App::draw(){
     if(debug) {
         ofDrawBitmapString("Forces: " + ofToString(pillow.forceLeft) + " " + ofToString(pillow.forceRight), 20, 30);
         ofDrawBitmapString("Angles: " + ofToString(pillow.angleLeft) + " " + ofToString(pillow.angleRight), 20, 50);
+        ofDrawBitmapString("FPS: " + ofToString(ofGetFrameRate()), 20, 70);
     }
     
     // begin camera
