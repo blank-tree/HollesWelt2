@@ -4,6 +4,10 @@
 
 class App : public ofBaseApp{
 	public:
+        bool debug = false;
+        ofEasyCam debugCam;
+        ofCamera mainCam;
+    
 		void setup();
 		void update();
 		void draw();

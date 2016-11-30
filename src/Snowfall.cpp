@@ -17,7 +17,7 @@ void Snowfall::setup() {
 void Snowfall::spawn() {
     Snowflake* s = activate();
     
-    s->setPosition(decideWidth(), spheresStartingPoint, decideWidth());
+    s->setPosition(rand() % ofGetWindowWidth(), FLAKE_START_Y, rand() % ofGetWindowWidth());
 }
 
 Snowflake* Snowfall::activate() {

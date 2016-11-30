@@ -6,6 +6,7 @@
 
 #define FLAKE_COUNT 10000
 #define FLAKE_LIFETIME 500
+#define FLAKE_START_Y 100
 
 class Snowfall {
     

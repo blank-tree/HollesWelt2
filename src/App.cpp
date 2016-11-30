@@ -1,7 +1,7 @@
 #include "App.h"
 
 void App::setup(){
-
+    ofBackground(0, 0, 0);
 }
 
 void App::update(){
@@ -9,10 +9,32 @@ void App::update(){
 }
 
 void App::draw(){
-
+    // begin camera
+    if(debug) {
+        debugCam.begin();
+    } else {
+        mainCam.begin();
+    }
+    
+    // draw debug info
+    if(debug) {
+        ofDrawAxis(100);
+    }
+    
+    // finish cam
+    if(debug) {
+        debugCam.end();
+    } else {
+        mainCam.end();
+    }
 }
 
-void App::keyPressed(int key){}
+void App::keyPressed(int key){
+    if(key == 'd') {
+        debug = !debug;
+        return;
+    }
+}
 
 void App::keyReleased(int key){}
 
