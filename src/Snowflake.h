@@ -4,7 +4,7 @@
 
 #define FLAKE_LIFETIME 500
 
-class Snowflake : public ofSpherePrimitive{
+class Snowflake : public ofNode{
     public:
         int restingCounter;
         int startingCounter;
