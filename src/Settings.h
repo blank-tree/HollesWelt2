@@ -14,3 +14,5 @@
 #define CLOUD_COUNT 5
 
 #define COUNTER_CLIMAX 500 // frames
+
+#define FINISH_TIME 250

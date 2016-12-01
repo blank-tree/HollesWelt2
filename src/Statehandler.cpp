@@ -95,9 +95,9 @@ void Statehandler::updateClimax() {
 void Statehandler::updateFinish() {
     counter++;
     
-    soundscape->intensity = 1 - (counter / 500);
+    soundscape->intensity = 1 - (counter / FINISH_TIME);
     
-    if(counter > 500) {
+    if(counter > FINISH_TIME) {
         state = RESET;
         return;
     }
