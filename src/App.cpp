@@ -10,14 +10,16 @@ void App::setup(){
     
     pillow.setup();
     snowfall.setup();
+    sky.setup();
 }
 
 void App::update(){
     pillow.update();
     
-    statehandler.update(&snowfall, &pillow, &flash);
+    statehandler.update(&snowfall, &pillow, &sky, &flash);
     
     snowfall.update();
+    sky.update();
 }
 
 void App::draw(){
@@ -46,8 +48,9 @@ void App::draw(){
         mainCam.draw();
     }
     
-    // draw snowfall
+    // draw world
     snowfall.draw();
+    sky.draw();
     
     // finish cam
     if(debug) {

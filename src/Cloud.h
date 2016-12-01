@@ -2,12 +2,10 @@
 
 #include "ofMain.h"
 
-class Cloud {
+class Cloud: public ofNode {
     
 public:
-    bool active = false;
+    float goldness;
     
-    void setup();
-    void update();
     void draw();
 };

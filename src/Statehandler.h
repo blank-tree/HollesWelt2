@@ -4,6 +4,7 @@
 
 #include "Snowfall.h"
 #include "Pillow.h"
+#include "Sky.h"
 #include "Flash.h"
 
 enum States {IDLE, SHAKE, CLIMAX, RESET};
@@ -14,15 +15,15 @@ public:
     States state;
     
     void setup();
-    void update(Snowfall*, Pillow*, Flash*);
+    void update(Snowfall*, Pillow*, Sky*, Flash*);
     
     string stateString();
     
 private:
     float counter;
     
-    void updateIdle(Snowfall*, Pillow*, Flash*);
-    void updateShake(Snowfall*, Pillow*, Flash*);
-    void updateClimax(Snowfall*, Pillow*, Flash*);
-    void updateReset(Snowfall*, Pillow*, Flash*);
+    void updateIdle(Snowfall*, Pillow*, Sky*, Flash*);
+    void updateShake(Snowfall*, Pillow*, Sky*, Flash*);
+    void updateClimax(Snowfall*, Pillow*, Sky*, Flash*);
+    void updateReset(Snowfall*, Pillow*, Sky*, Flash*);
 };

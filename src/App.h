@@ -5,6 +5,7 @@
 #include "Statehandler.h"
 #include "Pillow.h"
 #include "Snowfall.h"
+#include "Sky.h"
 
 class App : public ofBaseApp{
 	public:
@@ -16,6 +17,7 @@ class App : public ofBaseApp{
     
         Pillow pillow;
         Snowfall snowfall;
+        Sky sky;
         Flash flash;
     
 		void setup();
