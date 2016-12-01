@@ -53,7 +53,7 @@ void Statehandler::updateShake() {
     snowfall->dropSpeed = totalForce / 100.0;
     
     // increase counter
-    counter++; // TODO: increase by force
+    counter += totalForce;
     float intensity = ofMap(counter, 0, COUNTER_CLIMAX, 0, 1);
     
     // map snowfall
@@ -65,6 +65,7 @@ void Statehandler::updateShake() {
     // move on if climax has been reached
     if(counter > COUNTER_CLIMAX) {
         state = CLIMAX;
+        counter = 0;
         return;
     }
 }
