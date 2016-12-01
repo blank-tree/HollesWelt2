@@ -22,6 +22,7 @@ void Soundscape::update() {
     gold.setVolume(goldVolume);
 }
 
-void Soundscape::intensity(float intesity) {
-    
+void Soundscape::intensity(float intensity) {   
+    idleVolume = ofMap(intensity, 0, 1, 1, 0);
+    goldVolume = intensity;
 }

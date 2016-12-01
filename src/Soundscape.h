@@ -8,7 +8,7 @@ class Soundscape {
 public:
     void setup();
     void update();
-    void intensity(float intesity);
+    void intensity(float intensity);
     
 private:
     ofSoundPlayer idle;
