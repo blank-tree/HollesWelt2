@@ -5,6 +5,9 @@
 #include "Snowfall.h"
 #include "Pillow.h"
 #include "Flash.h"
+#include "Soundscape.h"
+
+#define SHAKE_MAX 1000
 
 enum States {IDLE, SHAKE, CLIMAX, RESET};
 
@@ -14,15 +17,15 @@ public:
     States state;
     
     void setup();
-    void update(Snowfall*, Pillow*, Flash*);
+    void update(Snowfall*, Pillow*, Flash*, Soundscape*);
     
     string stateString();
     
 private:
     float counter;
     
-    void updateIdle(Snowfall*, Pillow*, Flash*);
-    void updateShake(Snowfall*, Pillow*, Flash*);
-    void updateClimax(Snowfall*, Pillow*, Flash*);
-    void updateReset(Snowfall*, Pillow*, Flash*);
+    void updateIdle(Snowfall*, Pillow*, Flash*, Soundscape*);
+    void updateShake(Snowfall*, Pillow*, Flash*, Soundscape*);
+    void updateClimax(Snowfall*, Pillow*, Flash*, Soundscape*);
+    void updateReset(Snowfall*, Pillow*, Flash*, Soundscape*);
 };

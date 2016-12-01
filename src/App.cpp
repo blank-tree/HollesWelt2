@@ -17,7 +17,7 @@ void App::setup(){
 void App::update(){
     pillow.update();
     
-    statehandler.update(&snowfall, &pillow, &flash);
+    statehandler.update(&snowfall, &pillow, &flash, &soundscape);
     
     snowfall.update();
     
