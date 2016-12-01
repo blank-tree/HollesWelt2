@@ -4,20 +4,19 @@
 
 class Snowflake : public ofNode{
     public:
-        int restingCounter;
-        int startingCounter;
-        bool active;
-    
-        void setup(float);
-        void update(ofVec3f);
+        void setup(float dropSpeed, float goldness);
+        void update(ofVec3f wind);
         void draw();
     
     private:
+        bool active;
+    
         int xRange;
         int yRange;
         int zRange;
     
         ofVec3f movement;
+        float goldness;
     
         ofVec3f decideStart();
         ofVec3f decideMovement(float);

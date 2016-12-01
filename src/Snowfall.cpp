@@ -15,7 +15,7 @@ void Snowfall::update() {
         }
         
         Snowflake* s = flakes[next];
-        s->setup(dropSpeed);
+        s->setup(dropSpeed, goldness);
         
         next++;
         counter -= 1;
@@ -30,23 +30,7 @@ void Snowfall::update() {
 }
 
 void Snowfall::draw() {
-    // TODO: Move drawing of flakes to Snowflake.
     for(int i = 0; i < FLAKE_COUNT; i++) {
-        Snowflake* s = flakes[i];
-        
-        if(!s->active) {
-            continue;
-        }
-        
-        int grey = 255;
-        
-        if (s->restingCounter > 0) {
-            grey = ofMap(s->restingCounter, 0, FLAKE_LIFETIME, 255, 0);
-        }
-        
-        ofSetColor(grey, grey, grey);
-        ofFill();
-        
-        s->draw();
+        flakes[i]->draw();
     }
 }

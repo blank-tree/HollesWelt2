@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		526E0C931DF01EA00039481F /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 526E0C911DF01EA00039481F /* Utils.cpp */; };
 		52A2F20C1DEF4A9E006B2F4E /* Snowfall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52A2F2081DEF4A9E006B2F4E /* Snowfall.cpp */; };
 		52A2F20D1DEF4A9E006B2F4E /* Snowflake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52A2F20A1DEF4A9E006B2F4E /* Snowflake.cpp */; };
 		52A2F2111DEF55F3006B2F4E /* Pillow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52A2F20F1DEF55F3006B2F4E /* Pillow.cpp */; };
@@ -52,6 +53,8 @@
 
 /* Begin PBXFileReference section */
 		526E0C901DF019910039481F /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		526E0C911DF01EA00039481F /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
+		526E0C921DF01EA00039481F /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		52A2F2081DEF4A9E006B2F4E /* Snowfall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Snowfall.cpp; sourceTree = "<group>"; };
 		52A2F2091DEF4A9E006B2F4E /* Snowfall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Snowfall.h; sourceTree = "<group>"; };
 		52A2F20A1DEF4A9E006B2F4E /* Snowflake.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Snowflake.cpp; sourceTree = "<group>"; };
@@ -152,6 +155,8 @@
 				C4A9483A1DEF7594003477C9 /* Landscape.cpp */,
 				52A2F2171DEF933C006B2F4E /* Flash.h */,
 				52A2F2161DEF933C006B2F4E /* Flash.cpp */,
+				526E0C921DF01EA00039481F /* Utils.h */,
+				526E0C911DF01EA00039481F /* Utils.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -259,6 +264,7 @@
 				C4A948381DEF705C003477C9 /* Plane.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* App.cpp in Sources */,
+				526E0C931DF01EA00039481F /* Utils.cpp in Sources */,
 				C4BF36AA1DEF4FD300FDF472 /* Statehandler.cpp in Sources */,
 				52A2F2181DEF933C006B2F4E /* Flash.cpp in Sources */,
 				C4BF36A41DEF4C7400FDF472 /* Sky.cpp in Sources */,

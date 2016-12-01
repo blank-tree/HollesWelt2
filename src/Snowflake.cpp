@@ -7,12 +7,12 @@
 
 #include "Snowflake.h"
 #include "Settings.h"
+#include "Utils.h"
 
 // PUBLIC ---------------------------------
 
-void Snowflake::setup(float dropSpeed) {
-    restingCounter = 0;
-    startingCounter = 0;
+void Snowflake::setup(float dropSpeed, float goldness) {
+    this->goldness = goldness;
     
     active = true;
     
@@ -38,16 +38,9 @@ void Snowflake::update(ofVec3f wind) {
         movement.y = FLAKE_NORMAL_DROP_SPEED * -1;
     }
     
-    // let flakes rest when reached the floor
+    // deactivate snowflakes when reached floor
     if (getY() < 0) {
-        restingCounter++;
-        
-        if (restingCounter > FLAKE_LIFETIME) {
-            active = false;
-            return;
-        }
-        
-        restingCounter++;
+        active = false;
         return;
     }
     
@@ -56,9 +49,15 @@ void Snowflake::update(ofVec3f wind) {
 }
 
 void Snowflake::draw() {
+    if(!active) {
+        return;
+    }
+    
+    ofColor c = goldColor(goldness);
+    
     ofNoFill();
+    ofSetColor(c);
     ofSetLineWidth(1);
-    ofSetColor(255, 255, 255);
     
     ofVec3f pos = getPosition();
     
