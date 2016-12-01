@@ -1,7 +1,7 @@
 #include "Statehandler.h"
 
 void Statehandler::setup() {
-    state = CLIMAX;
+    state = IDLE;
 }
 
 void Statehandler::update(Snowfall* snowfall, Pillow* pillow, Flash* flash) {
@@ -26,8 +26,8 @@ void Statehandler::updateIdle(Snowfall* snowfall, Pillow* pillow, Flash* flash) 
     // TODO: Map force to snow rate.
     // TODO: Change to SHAKE on success (over 90 degrees).
     
-    // snowfall->spawnRate = 0.05;
-    snowfall->spawnRate = pillow->forceLeft * pillow->forceRight * 10;
+    snowfall->spawnRate = 10;
+    //snowfall->spawnRate = pillow->forceLeft * pillow->forceRight * 10;
 }
 
 void Statehandler::updateShake(Snowfall* snowfall, Pillow* pillow, Flash* flash) {

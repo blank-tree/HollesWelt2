@@ -9,7 +9,7 @@ void Snowfall::setup() {
 void Snowfall::update() {
     // spawn new flake if counter has been reached
     counter += spawnRate;
-    if(counter >= 1) {
+    while(counter >= 1) {
         if(next >= FLAKE_COUNT) {
             next = 0;
         }
@@ -18,7 +18,7 @@ void Snowfall::update() {
         s->setup();
         
         next++;
-        counter = 0;
+        counter -= 1;
     }
     
     // update all flakes

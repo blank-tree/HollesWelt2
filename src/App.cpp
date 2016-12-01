@@ -61,9 +61,34 @@ void App::draw(){
 }
 
 void App::keyPressed(int key){
-    if(key == 'd') {
-        debug = !debug;
-        return;
+    switch(key) {
+        case 32: // space
+            debug = !debug;
+            return;
+        case 'q':
+            pillow.forceLeft += DEBUG_RATE;
+            return;
+        case 'a':
+            pillow.forceLeft -= DEBUG_RATE;
+            return;
+        case 'w':
+            pillow.forceRight += DEBUG_RATE;
+            return;
+        case 's':
+            pillow.forceRight -= DEBUG_RATE;
+            return;
+        case 'e':
+            pillow.angleLeft += DEBUG_RATE;
+            return;
+        case 'd':
+            pillow.angleLeft -= DEBUG_RATE;
+            return;
+        case 'r':
+            pillow.angleRight += DEBUG_RATE;
+            return;
+        case 'f':
+            pillow.angleRight -= DEBUG_RATE;
+            return;
     }
 }
 
