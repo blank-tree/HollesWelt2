@@ -4,24 +4,24 @@ void Statehandler::setup() {
     state = IDLE;
 }
 
-void Statehandler::update(Snowfall* snowfall, Pillow* pillow, Sky* sky, Flash* flash) {
+void Statehandler::update(Snowfall* snowfall, Pillow* pillow, Sky* sky, Flash* flash, Soundscape* soundscape) {
     switch(state) {
         case IDLE:
-            updateIdle(snowfall, pillow, sky, flash);
+            updateIdle(snowfall, pillow, sky, flash, soundscape);
             break;
         case SHAKE:
-            updateShake(snowfall, pillow, sky, flash);
+            updateShake(snowfall, pillow, sky, flash, soundscape);
             break;
         case CLIMAX:
-            updateClimax(snowfall, pillow, sky, flash);
+            updateClimax(snowfall, pillow, sky, flash, soundscape);
             break;
         case RESET:
-            updateReset(snowfall, pillow, sky, flash);
+            updateReset(snowfall, pillow, sky, flash, soundscape);
             break;
     }
 }
 
-void Statehandler::updateIdle(Snowfall* snowfall, Pillow* pillow, Sky* sky, Flash* flash) {
+void Statehandler::updateIdle(Snowfall* snowfall, Pillow* pillow, Sky* sky, Flash* flash, Soundscape* soundscape) {
     // TODO: Map angles to cloud movements.
     // TODO: Map force to snow rate.
     // TODO: Change to SHAKE on success (over 90 degrees).
@@ -43,15 +43,22 @@ void Statehandler::updateIdle(Snowfall* snowfall, Pillow* pillow, Sky* sky, Flas
     }
 }
 
-void Statehandler::updateShake(Snowfall* snowfall, Pillow* pillow, Sky* sky, Flash* flash) {
+void Statehandler::updateShake(Snowfall* snowfall, Pillow* pillow, Sky* sky, Flash* flash, Soundscape* soundscape) {
     // TODO: Map force to snow rate.
     // TODO: Map angles to wind.
     // TODO: Map total to goldness (snow flakes, clouds, landscapes).
     // TODO: Change to CLIMAX on success.
     // TODO: Change to RESET on fail.
+    
+    //snowfall->spawnRate = pillow->forceLeft * pillow->forceRight * 10;
+    
+    counter = counter + 1 < SHAKE_MAX ? counter + 1 : SHAKE_MAX;
+    soundscape->intensity(ofMap(counter, 0, SHAKE_MAX, 0, 1));
 }
 
-void Statehandler::updateClimax(Snowfall* snowfall, Pillow* pillow, Sky* sky, Flash* flash) {
+void Statehandler::updateClimax(Snowfall* snowfall, Pillow* pillow, Sky* sky, Flash* flash, Soundscape* soundscape) {
+    soundscape->intensity(1);
+
     if(counter < 1) {
         counter += FLASH_SPEED_IN;
         flash->intensity = counter;
@@ -64,8 +71,9 @@ void Statehandler::updateClimax(Snowfall* snowfall, Pillow* pillow, Sky* sky, Fl
     }
 }
 
-void Statehandler::updateReset(Snowfall* snowfall, Pillow* pillow, Sky* sky, Flash* flash) {
+void Statehandler::updateReset(Snowfall* snowfall, Pillow* pillow, Sky* sky, Flash* flash, Soundscape* soundscape) {
     flash->intensity = 0;
+    soundscape->intensity(0);
     
     state = IDLE;
 }

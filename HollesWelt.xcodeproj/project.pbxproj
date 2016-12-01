@@ -14,6 +14,7 @@
 		52A2F2181DEF933C006B2F4E /* Flash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52A2F2161DEF933C006B2F4E /* Flash.cpp */; };
 		C4A948381DEF705C003477C9 /* Plane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C4A948361DEF705C003477C9 /* Plane.cpp */; };
 		C4A9483C1DEF7594003477C9 /* Landscape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C4A9483A1DEF7594003477C9 /* Landscape.cpp */; };
+		C4AE2D7E1DF026C100D46C51 /* Soundscape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C4AE2D7C1DF026C100D46C51 /* Soundscape.cpp */; };
 		C4BF36A41DEF4C7400FDF472 /* Sky.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C4BF36A21DEF4C7400FDF472 /* Sky.cpp */; };
 		C4BF36A71DEF4CE800FDF472 /* Cloud.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C4BF36A51DEF4CE800FDF472 /* Cloud.cpp */; };
 		C4BF36AA1DEF4FD300FDF472 /* Statehandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C4BF36A81DEF4FD300FDF472 /* Statehandler.cpp */; };
@@ -67,6 +68,8 @@
 		C4A948371DEF705C003477C9 /* Plane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plane.h; sourceTree = "<group>"; };
 		C4A9483A1DEF7594003477C9 /* Landscape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Landscape.cpp; sourceTree = "<group>"; };
 		C4A9483B1DEF7594003477C9 /* Landscape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Landscape.h; sourceTree = "<group>"; };
+		C4AE2D7C1DF026C100D46C51 /* Soundscape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Soundscape.cpp; sourceTree = "<group>"; };
+		C4AE2D7D1DF026C100D46C51 /* Soundscape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Soundscape.h; sourceTree = "<group>"; };
 		C4BF36A21DEF4C7400FDF472 /* Sky.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sky.cpp; sourceTree = "<group>"; };
 		C4BF36A31DEF4C7400FDF472 /* Sky.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sky.h; sourceTree = "<group>"; };
 		C4BF36A51DEF4CE800FDF472 /* Cloud.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cloud.cpp; sourceTree = "<group>"; };
@@ -157,6 +160,8 @@
 				52A2F2161DEF933C006B2F4E /* Flash.cpp */,
 				526E0C921DF01EA00039481F /* Utils.h */,
 				526E0C911DF01EA00039481F /* Utils.cpp */,
+				C4AE2D7D1DF026C100D46C51 /* Soundscape.h */,
+				C4AE2D7C1DF026C100D46C51 /* Soundscape.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -261,6 +266,7 @@
 				C4A9483C1DEF7594003477C9 /* Landscape.cpp in Sources */,
 				C4BF36A71DEF4CE800FDF472 /* Cloud.cpp in Sources */,
 				52A2F2111DEF55F3006B2F4E /* Pillow.cpp in Sources */,
+				C4AE2D7E1DF026C100D46C51 /* Soundscape.cpp in Sources */,
 				C4A948381DEF705C003477C9 /* Plane.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* App.cpp in Sources */,

@@ -11,15 +11,17 @@ void App::setup(){
     pillow.setup();
     snowfall.setup();
     sky.setup();
+    soundscape.setup();
 }
 
 void App::update(){
     pillow.update();
     
-    statehandler.update(&snowfall, &pillow, &sky, &flash);
+    statehandler.update(&snowfall, &pillow, &sky, &flash, &soundscape);
     
     snowfall.update();
     sky.update();
+    soundscape.update();
 }
 
 void App::draw(){
