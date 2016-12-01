@@ -4,24 +4,24 @@ void Statehandler::setup() {
     state = IDLE;
 }
 
-void Statehandler::update(Snowfall* snowfall, Pillow* pillow, Sky* sky, Flash* flash, Soundscape* soundscape) {
+void Statehandler::update() {
     switch(state) {
         case IDLE:
-            updateIdle(snowfall, pillow, sky, flash, soundscape);
+            updateIdle();
             break;
         case SHAKE:
-            updateShake(snowfall, pillow, sky, flash, soundscape);
+            updateShake();
             break;
         case CLIMAX:
-            updateClimax(snowfall, pillow, sky, flash, soundscape);
+            updateClimax();
             break;
         case RESET:
-            updateReset(snowfall, pillow, sky, flash, soundscape);
+            updateReset();
             break;
     }
 }
 
-void Statehandler::updateIdle(Snowfall* snowfall, Pillow* pillow, Sky* sky, Flash* flash, Soundscape* soundscape) {
+void Statehandler::updateIdle() {
     // TODO: Map angles to cloud movements.
     // TODO: Map force to snow rate.
     // TODO: Change to SHAKE on success (over 90 degrees).
@@ -43,7 +43,7 @@ void Statehandler::updateIdle(Snowfall* snowfall, Pillow* pillow, Sky* sky, Flas
     }
 }
 
-void Statehandler::updateShake(Snowfall* snowfall, Pillow* pillow, Sky* sky, Flash* flash, Soundscape* soundscape) {
+void Statehandler::updateShake() {
     // TODO: Map force to snow rate.
     // TODO: Map angles to wind.
     // TODO: Map total to goldness (snow flakes, clouds, landscapes).
@@ -56,7 +56,7 @@ void Statehandler::updateShake(Snowfall* snowfall, Pillow* pillow, Sky* sky, Fla
     soundscape->intensity(ofMap(counter, 0, SHAKE_MAX, 0, 1));
 }
 
-void Statehandler::updateClimax(Snowfall* snowfall, Pillow* pillow, Sky* sky, Flash* flash, Soundscape* soundscape) {
+void Statehandler::updateClimax() {
     soundscape->intensity(1);
 
     if(counter < 1) {
@@ -71,7 +71,7 @@ void Statehandler::updateClimax(Snowfall* snowfall, Pillow* pillow, Sky* sky, Fl
     }
 }
 
-void Statehandler::updateReset(Snowfall* snowfall, Pillow* pillow, Sky* sky, Flash* flash, Soundscape* soundscape) {
+void Statehandler::updateReset() {
     flash->intensity = 0;
     soundscape->intensity(0);
     

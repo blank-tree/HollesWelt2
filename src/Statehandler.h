@@ -17,16 +17,22 @@ class Statehandler {
 public:
     States state;
     
+    Snowfall* snowfall;
+    Pillow* pillow;
+    Sky* sky;
+    Flash* flash;
+    Soundscape* soundscape;
+    
     void setup();
-    void update(Snowfall*, Pillow*, Sky*, Flash*, Soundscape*);
+    void update();
     
     string stateString();
     
 private:
     float counter;
     
-    void updateIdle(Snowfall*, Pillow*, Sky*, Flash*, Soundscape*);
-    void updateShake(Snowfall*, Pillow*, Sky*, Flash*, Soundscape*);
-    void updateClimax(Snowfall*, Pillow*, Sky*, Flash*, Soundscape*);
-    void updateReset(Snowfall*, Pillow*, Sky*, Flash*, Soundscape*);
+    void updateIdle();
+    void updateShake();
+    void updateClimax();
+    void updateReset();
 };

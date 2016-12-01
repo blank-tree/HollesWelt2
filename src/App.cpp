@@ -6,6 +6,12 @@ void App::setup(){
     mainCam.setPosition(1500, ofGetWindowWidth() / 3, 0);
     mainCam.setOrientation(ofVec3f(0, 90, 0));
     
+    statehandler.snowfall = &snowfall;
+    statehandler.pillow = &pillow;
+    statehandler.sky = &sky;
+    statehandler.flash = &flash;
+    statehandler.soundscape = &soundscape;
+    
     statehandler.setup();
     
     pillow.setup();
@@ -17,7 +23,7 @@ void App::setup(){
 void App::update(){
     pillow.update();
     
-    statehandler.update(&snowfall, &pillow, &sky, &flash, &soundscape);
+    statehandler.update();
     
     snowfall.update();
     sky.update();
