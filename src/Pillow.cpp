@@ -14,7 +14,7 @@ void Pillow::setup() {
     vector <ofSerialDeviceInfo> deviceList = serial.getDeviceList();
     
     for(ofSerialDeviceInfo d: deviceList) {
-        if(d.getDeviceName() == "cu.usbmodem1411") {
+        if(d.getDeviceName() == "cu.usbmodem141221") {
             serial.setup(d.getDeviceID(), 9600);
             connected = true;
             return;

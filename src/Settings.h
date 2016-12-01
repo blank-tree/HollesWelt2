@@ -2,8 +2,8 @@
 
 #define DEBUG_RATE 10
 
-#define FLASH_SPEED_IN 0.04
-#define FLASH_SPEED_OUT 0.02
+#define FLASH_SPEED_IN 0.03
+#define FLASH_SPEED_OUT 0.015
 
 #define FLAKE_COUNT 10000
 #define FLAKE_START_Y 1000 // TODO: Other startingpoint
