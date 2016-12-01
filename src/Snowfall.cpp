@@ -15,7 +15,7 @@ void Snowfall::update() {
         }
         
         Snowflake* s = flakes[next];
-        s->setup();
+        s->setup(dropSpeed);
         
         next++;
         counter -= 1;

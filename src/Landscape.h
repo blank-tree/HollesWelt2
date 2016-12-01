@@ -1,7 +1,9 @@
 #pragma once
 
 #include "ofMain.h"
+
 #include "Plane.h"
+
 #define LAND_COUNT 10
 
 class Landscape {

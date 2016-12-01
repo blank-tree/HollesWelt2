@@ -3,14 +3,17 @@
 #include "ofMain.h"
 
 #include "Snowflake.h"
-
-#define FLAKE_COUNT 10000
-#define FLAKE_START_Y 1000 // TODO: Other startingpoint
+#include "Settings.h"
 
 class Snowfall {
     
 public:
+    // how many new flakes per frame
     float spawnRate = 0;
+    
+    // how many pixels to drop per frame
+    float dropSpeed = 1;
+    
     ofVec3f wind;
     
     void setup();

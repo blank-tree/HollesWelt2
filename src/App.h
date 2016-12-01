@@ -6,8 +6,6 @@
 #include "Pillow.h"
 #include "Snowfall.h"
 
-#define DEBUG_RATE 10
-
 class App : public ofBaseApp{
 	public:
         bool debug = false;

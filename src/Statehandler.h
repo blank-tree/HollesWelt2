@@ -6,9 +6,6 @@
 #include "Pillow.h"
 #include "Flash.h"
 
-#define FLASH_SPEED_IN 0.04
-#define FLASH_SPEED_OUT 0.02
-
 enum States {IDLE, SHAKE, CLIMAX, RESET};
 
 class Statehandler {

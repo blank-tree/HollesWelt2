@@ -2,15 +2,13 @@
 
 #include "ofMain.h"
 
-#define FLAKE_LIFETIME 500
-
 class Snowflake : public ofNode{
     public:
         int restingCounter;
         int startingCounter;
         bool active;
     
-        void setup();
+        void setup(float);
         void update(ofVec3f);
         void draw();
     
@@ -18,8 +16,9 @@ class Snowflake : public ofNode{
         int xRange;
         int yRange;
         int zRange;
+    
         ofVec3f movement;
     
         ofVec3f decideStart();
-        ofVec3f decideMovement();
+        ofVec3f decideMovement(float);
 };

@@ -6,10 +6,11 @@
 //
 
 #include "Snowflake.h"
+#include "Settings.h"
 
 // PUBLIC ---------------------------------
 
-void Snowflake::setup() {
+void Snowflake::setup(float dropSpeed) {
     restingCounter = 0;
     startingCounter = 0;
     
@@ -20,7 +21,7 @@ void Snowflake::setup() {
     zRange = ofGetWindowWidth();
     
     this->setPosition(decideStart());
-    movement = this->decideMovement();
+    movement = this->decideMovement(dropSpeed);
     
     this->update(ofVec3f(0, 0, 0));
 }
@@ -30,6 +31,14 @@ void Snowflake::update(ofVec3f wind) {
         return;
     }
     
+    // slow down snow flakes and enforce normal drop speed
+    if(movement.y < FLAKE_NORMAL_DROP_SPEED * -1) {
+        movement.y = movement.y + FLAKE_DAMPING_RATE;
+    } else if(movement.y > FLAKE_NORMAL_DROP_SPEED * -1) {
+        movement.y = FLAKE_NORMAL_DROP_SPEED * -1;
+    }
+    
+    // let flakes rest when reached the floor
     if (getY() < 0) {
         restingCounter++;
         
@@ -74,9 +83,9 @@ ofVec3f Snowflake::decideStart() {
     return ofVec3f(startX, startY, startZ);
 }
 
-ofVec3f Snowflake::decideMovement() {
+ofVec3f Snowflake::decideMovement(float dropSpeed) {
     float targetX = (ofRandom(1) - 0.5) / 1;
-    float targetY = -2;
+    float targetY = dropSpeed * -1;
     float targetZ = (ofRandom(1) - 0.5) / 1;
     return ofVec3f(targetX, targetY, targetZ);
 }

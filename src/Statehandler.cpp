@@ -26,7 +26,8 @@ void Statehandler::updateIdle(Snowfall* snowfall, Pillow* pillow, Flash* flash) 
     // TODO: Map force to snow rate.
     // TODO: Change to SHAKE on success (over 90 degrees).
     
-    snowfall->spawnRate = 10;
+    snowfall->spawnRate = pillow->forceLeft / 100;
+    snowfall->dropSpeed = pillow->forceLeft / 5;
     //snowfall->spawnRate = pillow->forceLeft * pillow->forceRight * 10;
 }
 
