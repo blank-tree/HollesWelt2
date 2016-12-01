@@ -38,7 +38,7 @@ void App::draw(){
         
         ofDrawBitmapString("Forces: " + ofToString(pillow.forceLeft) + " " + ofToString(pillow.forceRight), 20, 30);
         ofDrawBitmapString("Angles: " + ofToString(pillow.angleLeft) + " " + ofToString(pillow.angleRight), 20, 50);
-        ofDrawBitmapString("State: " + statehandler.stateString(), 20, 70);
+        ofDrawBitmapString("State: " + statehandler.debugString(), 20, 70);
         ofDrawBitmapString("FPS: " + ofToString(ofGetFrameRate()), 20, 90);
     }
     

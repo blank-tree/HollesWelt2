@@ -8,15 +8,11 @@
 #include "Flash.h"
 #include "Soundscape.h"
 
-#define SHAKE_MAX 1000
-
 enum States {IDLE, SHAKE, CLIMAX, RESET};
 
 class Statehandler {
 
 public:
-    States state;
-    
     Snowfall* snowfall;
     Pillow* pillow;
     Sky* sky;
@@ -26,9 +22,10 @@ public:
     void setup();
     void update();
     
-    string stateString();
+    string debugString();
     
 private:
+    States state;
     float counter;
     
     void updateIdle();

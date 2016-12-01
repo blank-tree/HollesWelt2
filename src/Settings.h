@@ -12,3 +12,5 @@
 #define FLAKE_DAMPING_RATE 0.1 // per frame
 
 #define CLOUD_COUNT 5
+
+#define COUNTER_CLIMAX 1000 // frames

@@ -22,13 +22,9 @@ void Statehandler::update() {
 }
 
 void Statehandler::updateIdle() {
-    // TODO: Map angles to cloud movements.
-    // TODO: Map force to snow rate.
-    // TODO: Change to SHAKE on success (over 90 degrees).
-    
-    snowfall->spawnRate = pillow->forceLeft / 100.0;
-    snowfall->dropSpeed = pillow->forceLeft / 5.0;
-    snowfall->goldness = pillow->forceRight / 100.0;
+    // set spawn intensity
+    float totalForce = (pillow->forceLeft + pillow->forceRight) / 2;
+    snowfall->spawnRate = totalForce / 100.0;
     
     // set sky intensity
     float totalAngle = (pillow->angleLeft + pillow->angleRight) / 2;
@@ -36,8 +32,6 @@ void Statehandler::updateIdle() {
     
     // move on if angle has been reached
     if(totalAngle > 90) {
-        sky->intensity = 1;
-        
         state = SHAKE;
         return;
     }
@@ -50,14 +44,33 @@ void Statehandler::updateShake() {
     // TODO: Change to CLIMAX on success.
     // TODO: Change to RESET on fail.
     
-    //snowfall->spawnRate = pillow->forceLeft * pillow->forceRight * 10;
+    // fix sky intensity
+    sky->intensity = 1;
     
-    counter = counter + 1 < SHAKE_MAX ? counter + 1 : SHAKE_MAX;
-    soundscape->intensity(ofMap(counter, 0, SHAKE_MAX, 0, 1));
+    // set spawn intensity & drop speed & goldness
+    float totalForce = (pillow->forceLeft + pillow->forceRight) / 2;
+    snowfall->spawnRate = totalForce / 100.0;
+    snowfall->dropSpeed = totalForce / 100.0;
+    
+    // increase counter
+    counter++; // TODO: increase by force
+    float intensity = ofMap(counter, 0, COUNTER_CLIMAX, 0, 1);
+    
+    // map snowfall
+    snowfall->goldness = intensity;
+    
+    // map soundscape
+    soundscape->intensity = intensity;
+    
+    // move on if climax has been reached
+    if(counter > COUNTER_CLIMAX) {
+        state = CLIMAX;
+        return;
+    }
 }
 
 void Statehandler::updateClimax() {
-    soundscape->intensity(1);
+    soundscape->intensity = 1;
 
     if(counter < 1) {
         counter += FLASH_SPEED_IN;
@@ -72,21 +85,33 @@ void Statehandler::updateClimax() {
 }
 
 void Statehandler::updateReset() {
+    snowfall->spawnRate = 0;
+    snowfall->dropSpeed = 0;
+    snowfall->goldness = 0;
     flash->intensity = 0;
-    soundscape->intensity(0);
+    soundscape->intensity = 0;
     
+    counter = 0;
     state = IDLE;
 }
 
-string Statehandler::stateString() {
+string Statehandler::debugString() {
+    string str;
+    
     switch(state) {
         case IDLE:
-            return "Idle";
+            str = "Idle";
+            break;
         case SHAKE:
-            return "Shake";
+            str = "Shake";
+            break;
         case CLIMAX:
-            return "Climax";
+            str = "Climax";
+            break;
         case RESET:
-            return "Reset";
+            str = "Reset";
+            break;
     }
+    
+    return str + " (" + ofToString(counter) + ")";
 }
