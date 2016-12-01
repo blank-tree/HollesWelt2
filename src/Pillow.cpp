@@ -58,7 +58,7 @@ void Pillow::update() {
     
     vector<string> values = ofSplitString(str, ",");
     
-    if(values.size() != 4) {
+    if(values.size() != 5) {
         return;
     }
     
@@ -69,13 +69,13 @@ void Pillow::update() {
             case 0:
                 forceLeft = v;
                 break;
-            case 2:
+            case 1:
                 forceRight = v;
                 break;
-            case 3:
+            case 2:
                 angleLeft = v;
                 break;
-            case 4:
+            case 3:
                 angleRight = v;
                 break;
         }
