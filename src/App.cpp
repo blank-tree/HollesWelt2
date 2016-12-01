@@ -10,6 +10,8 @@ void App::setup(){
     
     pillow.setup();
     snowfall.setup();
+    
+    soundscape.setup();
 }
 
 void App::update(){
@@ -18,6 +20,8 @@ void App::update(){
     statehandler.update(&snowfall, &pillow, &flash);
     
     snowfall.update();
+    
+    soundscape.update();
 }
 
 void App::draw(){
