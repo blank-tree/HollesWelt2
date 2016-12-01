@@ -13,4 +13,4 @@
 
 #define CLOUD_COUNT 5
 
-#define COUNTER_CLIMAX 1000 // frames
+#define COUNTER_CLIMAX 500 // frames

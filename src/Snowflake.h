@@ -7,6 +7,7 @@ class Snowflake : public ofNode{
         void setup(float dropSpeed, float goldness);
         void update(ofVec3f wind);
         void draw();
+        void reset();
     
     private:
         bool active;

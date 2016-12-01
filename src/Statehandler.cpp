@@ -15,6 +15,9 @@ void Statehandler::update() {
         case CLIMAX:
             updateClimax();
             break;
+        case FINISH:
+            updateFinish();
+            break;
         case RESET:
             updateReset();
             break;
@@ -24,7 +27,7 @@ void Statehandler::update() {
 void Statehandler::updateIdle() {
     // set spawn intensity
     float totalForce = (pillow->forceLeft + pillow->forceRight) / 2;
-    snowfall->spawnRate = totalForce / 100.0;
+    snowfall->spawnRate = ofClamp(totalForce / 100.0, 0.025, 1);
     
     // set sky intensity
     float totalAngle = (pillow->angleLeft + pillow->angleRight) / 2;
@@ -49,11 +52,11 @@ void Statehandler::updateShake() {
     
     // set spawn intensity & drop speed & goldness
     float totalForce = (pillow->forceLeft + pillow->forceRight) / 2;
-    snowfall->spawnRate = totalForce / 100.0;
-    snowfall->dropSpeed = totalForce / 100.0;
+    snowfall->spawnRate = totalForce / 10.0;
+    snowfall->dropSpeed = totalForce / 10.0;
     
     // increase counter
-    counter += totalForce;
+    counter += totalForce / 10;
     float intensity = ofMap(counter, 0, COUNTER_CLIMAX, 0, 1);
     
     // map goldness
@@ -80,18 +83,37 @@ void Statehandler::updateClimax() {
         flash->intensity = counter;
     } else if(counter < 2) {
         counter += FLASH_SPEED_OUT;
+        flash->blackness = 1;
         flash->intensity = 1 - (counter - 1);
     } else {
+        state = FINISH;
+        counter = 0;
+        return;
+    }
+}
+
+void Statehandler::updateFinish() {
+    counter++;
+    
+    soundscape->intensity = 1 - (counter / 500);
+    
+    if(counter > 500) {
         state = RESET;
         return;
     }
 }
 
 void Statehandler::updateReset() {
+    snowfall->reset();
     snowfall->spawnRate = 0;
     snowfall->dropSpeed = 0;
     snowfall->goldness = 0;
+    
+    sky->intensity = 0;
+    sky->goldness = 0;
+    
     flash->intensity = 0;
+    flash->blackness = 0;
     soundscape->intensity = 0;
     
     counter = 0;
@@ -110,6 +132,9 @@ string Statehandler::debugString() {
             break;
         case CLIMAX:
             str = "Climax";
+            break;
+        case FINISH:
+            str = "Finish";
             break;
         case RESET:
             str = "Reset";

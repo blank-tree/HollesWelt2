@@ -6,6 +6,7 @@ class Flash {
     
 public:
     float intensity;
+    float blackness;
     
     void draw();
 };

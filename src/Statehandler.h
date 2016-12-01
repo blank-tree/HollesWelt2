@@ -8,7 +8,7 @@
 #include "Flash.h"
 #include "Soundscape.h"
 
-enum States {IDLE, SHAKE, CLIMAX, RESET};
+enum States {IDLE, SHAKE, CLIMAX, FINISH, RESET};
 
 class Statehandler {
 
@@ -31,5 +31,6 @@ private:
     void updateIdle();
     void updateShake();
     void updateClimax();
+    void updateFinish();
     void updateReset();
 };

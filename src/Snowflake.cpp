@@ -73,6 +73,10 @@ void Snowflake::draw() {
     ofPopMatrix();
 }
 
+void Snowflake::reset() {
+    active = false;
+}
+
 // PRIVATE ---------------------------------
 
 ofVec3f Snowflake::decideStart() {

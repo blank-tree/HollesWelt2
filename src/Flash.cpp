@@ -10,6 +10,10 @@
 
 void Flash::draw() {
     ofFill();
+    
     ofSetColor(255, 157, 0, intensity * 255);
+    ofDrawRectangle(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
+    
+    ofSetColor(0, 0, 0, blackness * 255);
     ofDrawRectangle(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
 }

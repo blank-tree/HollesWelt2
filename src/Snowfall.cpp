@@ -34,3 +34,9 @@ void Snowfall::draw() {
         flakes[i]->draw();
     }
 }
+
+void Snowfall::reset() {
+    for(int i = 0; i < FLAKE_COUNT; i++) {
+        flakes[i]->reset();
+    }
+}

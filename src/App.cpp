@@ -31,17 +31,6 @@ void App::update(){
 }
 
 void App::draw(){
-    // draw info
-    if(info) {
-        ofSetColor(255, 255, 255);
-        ofFill();
-        
-        ofDrawBitmapString("Forces: " + ofToString(pillow.forceLeft) + " " + ofToString(pillow.forceRight), 20, 30);
-        ofDrawBitmapString("Angles: " + ofToString(pillow.angleLeft) + " " + ofToString(pillow.angleRight), 20, 50);
-        ofDrawBitmapString("State: " + statehandler.debugString(), 20, 70);
-        ofDrawBitmapString("FPS: " + ofToString(ofGetFrameRate()), 20, 90);
-    }
-    
     // begin camera
     if(debug) {
         debugCam.begin();
@@ -69,6 +58,17 @@ void App::draw(){
     
     // draw flash
     flash.draw();
+    
+    // draw info
+    if(info) {
+        ofSetColor(255, 255, 255);
+        ofFill();
+        
+        ofDrawBitmapString("Forces: " + ofToString(pillow.forceLeft) + " " + ofToString(pillow.forceRight), 20, 30);
+        ofDrawBitmapString("Angles: " + ofToString(pillow.angleLeft) + " " + ofToString(pillow.angleRight), 20, 50);
+        ofDrawBitmapString("State: " + statehandler.debugString(), 20, 70);
+        ofDrawBitmapString("FPS: " + ofToString(ofGetFrameRate()), 20, 90);
+    }
 }
 
 void App::keyPressed(int key){

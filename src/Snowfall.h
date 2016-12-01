@@ -22,6 +22,7 @@ public:
     void setup();
     void update();
     void draw();
+    void reset();
     
 private:
     Snowflake* flakes[FLAKE_COUNT];
