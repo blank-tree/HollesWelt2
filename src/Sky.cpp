@@ -15,6 +15,8 @@ void Sky::update() {
     for (int i = 0; i < CLOUD_COUNT; i++) {
         Cloud* c = clouds[i];
         
+        c->goldness = goldness;
+        
         ofVec3f pos = c->getPosition();
         c->setPosition(pos.x, ofMap(intensity, 0, 1, ofGetWindowHeight() + 400, ofGetWindowHeight()), pos.z);
     }

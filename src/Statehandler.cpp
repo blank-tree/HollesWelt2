@@ -56,8 +56,9 @@ void Statehandler::updateShake() {
     counter += totalForce;
     float intensity = ofMap(counter, 0, COUNTER_CLIMAX, 0, 1);
     
-    // map snowfall
+    // map goldness
     snowfall->goldness = intensity;
+    sky->goldness = intensity;
     
     // map soundscape
     soundscape->intensity = intensity;
@@ -73,6 +74,7 @@ void Statehandler::updateShake() {
 void Statehandler::updateClimax() {
     soundscape->intensity = 1;
 
+    // animate flash
     if(counter < 1) {
         counter += FLASH_SPEED_IN;
         flash->intensity = counter;
