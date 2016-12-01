@@ -11,6 +11,8 @@
 class App : public ofBaseApp{
 	public:
         bool debug = false;
+        bool info = false;
+    
         ofEasyCam debugCam;
         ofCamera mainCam;
     

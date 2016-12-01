@@ -31,8 +31,8 @@ void App::update(){
 }
 
 void App::draw(){
-    // draw 2d debug info
-    if(debug) {
+    // draw info
+    if(info) {
         ofSetColor(255, 255, 255);
         ofFill();
         
@@ -75,6 +75,9 @@ void App::keyPressed(int key){
     switch(key) {
         case 32: // space
             debug = !debug;
+            return;
+        case 'i':
+            info = !info;
             return;
         case 'q':
             pillow.forceLeft += DEBUG_RATE;
