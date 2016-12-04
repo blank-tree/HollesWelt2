@@ -27,3 +27,9 @@ void Sky::draw() {
         clouds[i]->draw();
     }
 }
+
+void Sky::testDraw() {
+    
+    // @Simon: Mach dini Sache do:
+    
+}

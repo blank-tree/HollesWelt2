@@ -57,3 +57,12 @@ void Landscape::colorGold(int amount) {
     }
 }
 
+void Landscape::testDraw() {
+
+    // @Simon: Mach dini Sache do:
+
+
+
+
+}
+

@@ -21,6 +21,8 @@ public:
     
     void colorGold(int amount);
     
+    void testDraw();
+    
     
 private:
     

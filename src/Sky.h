@@ -16,6 +16,8 @@ public:
     void update();
     void draw();
     
+    void testDraw();
+    
 private:
     Cloud* clouds[CLOUD_COUNT];
 };

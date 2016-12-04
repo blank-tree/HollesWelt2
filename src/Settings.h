@@ -2,7 +2,7 @@
 
 #define DEBUG_RATE 10
 
-#define FLASH_SPEED_IN 0.03
+#define FLASH_SPEED_IN 0.01
 #define FLASH_SPEED_OUT 0.015
 
 #define FLAKE_COUNT 10000
@@ -13,6 +13,6 @@
 
 #define CLOUD_COUNT 5
 
-#define COUNTER_CLIMAX 500 // frames
+#define COUNTER_CLIMAX 1500 // frames
 
 #define FINISH_TIME 250

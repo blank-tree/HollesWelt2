@@ -7,6 +7,7 @@
 #include "Snowfall.h"
 #include "Sky.h"
 #include "Soundscape.h"
+#include "Landscape.h"
 
 class App : public ofBaseApp{
 	public:
@@ -23,6 +24,7 @@ class App : public ofBaseApp{
         Sky sky;
         Flash flash;
         Soundscape soundscape;
+        Landscape landscape;
     
 		void setup();
 		void update();
