@@ -16,9 +16,12 @@ class Snowflake : public ofNode{
         int yRange;
         int zRange;
     
+        float endY;
+    
         ofVec3f movement;
         float goldness;
     
         ofVec3f decideStart();
         ofVec3f decideMovement(float);
+        float decideEndY();
 };

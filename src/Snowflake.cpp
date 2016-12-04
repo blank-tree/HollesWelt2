@@ -23,6 +23,8 @@ void Snowflake::setup(float dropSpeed, float goldness) {
     this->setPosition(decideStart());
     movement = this->decideMovement(dropSpeed);
     
+    endY = decideEndY();
+    
     this->update(ofVec3f(0, 0, 0));
 }
 
@@ -39,7 +41,7 @@ void Snowflake::update(ofVec3f wind) {
     }
     
     // deactivate snowflakes when reached floor
-    if (getY() < 0) {
+    if (getY() < this->endY) {
         active = false;
         return;
     }
@@ -81,8 +83,8 @@ void Snowflake::reset() {
 
 ofVec3f Snowflake::decideStart() {
     float startX = (float)((rand() % xRange) - xRange / 2);
-    float startY = yRange;
     float startZ = (float)((rand() % zRange) - zRange / 2);
+    float startY = yRange + 300 - startZ / 2;
     return ofVec3f(startX, startY, startZ);
 }
 
@@ -91,4 +93,8 @@ ofVec3f Snowflake::decideMovement(float dropSpeed) {
     float targetY = dropSpeed * -1;
     float targetZ = (ofRandom(1) - 0.5) / 1;
     return ofVec3f(targetX, targetY, targetZ);
+}
+
+float Snowflake::decideEndY() {
+    return -300 + this->getZ() / 2;
 }
