@@ -5,6 +5,14 @@ void Statehandler::setup() {
 }
 
 void Statehandler::update() {
+    
+    totalAngle = (pillow->angleLeft + pillow->angleRight) / 2;
+    
+    // set sky intensity
+    if (state == IDLE || state == SHAKE) {
+        sky->intensity = ofClamp(totalAngle / 90.0, 0, 1);
+    }
+    
     switch(state) {
         case IDLE:
             updateIdle();
@@ -29,14 +37,14 @@ void Statehandler::updateIdle() {
     float totalForce = (pillow->forceLeft + pillow->forceRight) / 2;
     snowfall->spawnRate = ofClamp(totalForce / 100.0, 0.025, 1);
     
-    // set sky intensity
-    float totalAngle = (pillow->angleLeft + pillow->angleRight) / 2;
-    sky->intensity = ofClamp(totalAngle / 90.0, 0, 1);
-    
     // move on if angle has been reached
     if(totalAngle > 90) {
         state = SHAKE;
         return;
+    }
+    
+    if (counter != 0) {
+        counter--;
     }
 }
 
@@ -72,6 +80,13 @@ void Statehandler::updateShake() {
         counter = 0;
         return;
     }
+    
+    if (totalAngle < 90) {
+        state = IDLE;
+//        counter = 0;
+        return;
+    }
+    
 }
 
 void Statehandler::updateClimax() {

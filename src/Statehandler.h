@@ -27,6 +27,7 @@ public:
 private:
     States state;
     float counter;
+    float totalAngle;
     
     void updateIdle();
     void updateShake();
