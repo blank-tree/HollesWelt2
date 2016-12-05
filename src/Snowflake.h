@@ -16,6 +16,7 @@ class Snowflake : public ofNode{
         int yRange;
         int zRange;
     
+        float increasedSpeed;
         float endY;
     
         ofVec3f movement;
