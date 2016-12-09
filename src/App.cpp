@@ -11,6 +11,7 @@ void App::setup(){
     statehandler.sky = &sky;
     statehandler.flash = &flash;
     statehandler.soundscape = &soundscape;
+    statehandler.landscape = &landscape;
     
     statehandler.setup();
     

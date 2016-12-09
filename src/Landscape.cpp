@@ -1,11 +1,24 @@
 #include "Landscape.h"
+#include "Utils.h"
 
 void Landscape::setup() {
+
+    intensity = 0;
+
+    for (int i = 0; i < 3; ++i) {
+        goldness[i] = 0;
+    }
 
 }
 
 void Landscape::update() {
 
+    goldness[0] = ofMap(intensity, 0, 0.3333, 0, 1, true);
+    goldness[1] = ofMap(intensity, 0.3334, 0.6666, 0, 1, true);
+    goldness[2] = ofMap(intensity, 0.6667, 1, 0, 1, true);
+
+
+    cout<<intensity<<"\n";
     
 }
 
@@ -25,7 +38,7 @@ void Landscape::draw() {
     //Outer
     //Stroke
     ofNoFill();
-    ofSetColor(255);
+    ofSetColor(goldColor(goldness[0]));
 
     ofBeginShape();
     ofCurveVertex(0, -500, -1600);
@@ -55,7 +68,7 @@ void Landscape::draw() {
     //Middle
     //Stroke
     ofNoFill();
-    ofSetColor(255);
+    ofSetColor(goldColor(goldness[1]));
 
     ofBeginShape();
     ofCurveVertex(0, -500, -1500);
@@ -85,7 +98,7 @@ void Landscape::draw() {
     //Inner
     //Stroke
     ofNoFill();
-    ofSetColor(255);
+    ofSetColor(goldColor(goldness[2]));
 
     ofBeginShape();
     ofCurveVertex(0, -500, -1400);
@@ -116,7 +129,7 @@ void Landscape::draw() {
     //Outer
     //Stroke
     ofNoFill();
-    ofSetColor(255);
+    ofSetColor(goldColor(goldness[0]));
 
     ofBeginShape();
     ofCurveVertex(0, -300, 1600);
@@ -145,7 +158,7 @@ void Landscape::draw() {
     //Middle
     //Stroke
     ofNoFill();
-    ofSetColor(255);
+    ofSetColor(goldColor(goldness[1]));
 
     ofBeginShape();
     ofCurveVertex(0, -300, 1600);
@@ -174,7 +187,7 @@ void Landscape::draw() {
     //Inner
     //Stroke
     ofNoFill();
-    ofSetColor(255);
+    ofSetColor(goldColor(goldness[2]));
 
     ofBeginShape();
     ofCurveVertex(0, -300, 1600);
@@ -200,8 +213,3 @@ void Landscape::draw() {
     ofCurveVertex(0, -300, 600);
     ofEndShape();
 }
-
-void Landscape::colorGold(int amount) {
-
-}
-

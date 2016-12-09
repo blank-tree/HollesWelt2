@@ -7,6 +7,7 @@
 #include "Sky.h"
 #include "Flash.h"
 #include "Soundscape.h"
+#include "Landscape.h"
 
 enum States {IDLE, SHAKE, CLIMAX, FINISH, RESET};
 
@@ -18,6 +19,7 @@ public:
     Sky* sky;
     Flash* flash;
     Soundscape* soundscape;
+    Landscape* landscape;
     
     void setup();
     void update();

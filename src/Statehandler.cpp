@@ -57,6 +57,7 @@ void Statehandler::updateShake() {
     
     // fix sky intensity
     sky->intensity = 1;
+    landscape->intensity = ofClamp(ofMap(counter, 0, COUNTER_CLIMAX, 0, 1), 0, 1);
     
     // set spawn intensity & drop speed & goldness
     float totalForce = (pillow->forceLeft + pillow->forceRight) / 2;
