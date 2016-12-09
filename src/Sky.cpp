@@ -7,6 +7,7 @@ void Sky::setup() {
 
     for (int i = 0; i < 3; ++i) {
         goldness[i] = 0;
+        positions[i] = 0;
     }
 }
 
@@ -14,6 +15,12 @@ void Sky::update() {
     goldness[0] = ofMap(intensity, 0, 0.3333, 0, 1, true);
     goldness[1] = ofMap(intensity, 0.3334, 0.6666, 0, 1, true);
     goldness[2] = ofMap(intensity, 0.6667, 1, 0, 1, true);
+
+    positions[0] = ofMap(movement, 0, 1, 1200, 0, true);
+    positions[1] = ofMap(movement, 0, 1, 1200, 0, true);
+    positions[2] = ofMap(movement, 0, 1, 600, 0, true);
+
+
 }
 
 void Sky::draw() {
@@ -27,7 +34,7 @@ void Sky::draw() {
 //Draw cloud #1
 
     ofPushMatrix();
-    ofTranslate(0,800,400); //reposition cloud #1
+    ofTranslate(0,800,400 + positions[0]); //reposition cloud #1
 
     //Outer
     //Stroke
@@ -161,7 +168,7 @@ void Sky::draw() {
 //Draw cloud #2
 
     ofPushMatrix();
-    ofTranslate(0,1200,-800); //reposition cloud #2
+    ofTranslate(0,1200,-800 - positions[1]); //reposition cloud #2
 
     //Outer
     //Stroke
@@ -287,7 +294,7 @@ void Sky::draw() {
 //Draw cloud #3
 
     ofPushMatrix();
-    ofTranslate(0,1300,0); //reposition cloud #3
+    ofTranslate(0,1300 + positions[2], 0); //reposition cloud #3
     ofScale(1, 1.1, 1.1);
 
     //Outer

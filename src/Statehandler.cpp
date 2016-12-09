@@ -71,7 +71,6 @@ void Statehandler::updateShake() {
     
     // map goldness
     snowfall->goldness = intensity;
-//    sky->goldness = intensity;
     
     // map soundscape
     soundscape->intensity = intensity;
@@ -127,7 +126,7 @@ void Statehandler::updateReset() {
     snowfall->goldness = 0;
     
     sky->intensity = 0;
-//    sky->goldness = 0;
+    landscape->intensity = 0;
     
     flash->intensity = 0;
     flash->blackness = 0;

@@ -17,5 +17,6 @@ public:
 private:
 
     float goldness [3];
+    float positions [3];
 
 };
