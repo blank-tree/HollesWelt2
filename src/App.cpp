@@ -18,6 +18,7 @@ void App::setup(){
     snowfall.setup();
     sky.setup();
     soundscape.setup();
+    landscape.setup();
 }
 
 void App::update(){
@@ -28,6 +29,7 @@ void App::update(){
     snowfall.update();
     sky.update();
     soundscape.update();
+    landscape.update();
     
 }
 
@@ -49,12 +51,7 @@ void App::draw(){
     // draw world
     snowfall.draw();
     sky.draw();
-    
-    
-    
-    // TODO: remove Testing
-    landscape.testDraw();
-    sky.testDraw();
+    landscape.draw();
     
     // finish cam
     if(debug) {

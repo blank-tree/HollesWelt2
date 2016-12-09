@@ -10,14 +10,7 @@ void Sky::update() {
 }
 
 void Sky::draw() {
-
-}
-
-void Sky::testDraw() {
-
-    // @Simon: Mach dini Sache do:
-
-    /* Order the shapes are drawn:
+/* Order the shapes are drawn:
      * - Define "NoFill" and set color to white
      * - Draw the shape once (for the border)
      * - Define "Fill" and set color to black
@@ -414,6 +407,4 @@ void Sky::testDraw() {
     ofEndShape();
 
     ofPopMatrix(); //cloud #3
-
-
 }

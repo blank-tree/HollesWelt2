@@ -15,8 +15,6 @@ public:
     void update();
     void draw();
     
-    void testDraw();
-    
 private:
 
 };

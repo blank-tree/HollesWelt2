@@ -10,17 +10,6 @@ void Landscape::update() {
 }
 
 void Landscape::draw() {
-
-}
-
-void Landscape::colorGold(int amount) {
-
-}
-
-void Landscape::testDraw() {
-
-    // @Simon: Mach dini Sache do:
-
     //RIP CODE - SO MANY LINES
 
     /* Order the shapes are drawn:
@@ -210,10 +199,9 @@ void Landscape::testDraw() {
     ofCurveVertex(0, -300, 200);
     ofCurveVertex(0, -300, 600);
     ofEndShape();
+}
 
-
-
-
+void Landscape::colorGold(int amount) {
 
 }
 
