@@ -89,7 +89,7 @@ void Snowflake::reset() {
 ofVec3f Snowflake::decideStart() {
     float startX = (float)((rand() % xRange) - xRange / 2);
     float startZ = (float)((rand() % zRange) - zRange / 2);
-    float startY = yRange + 300 - startZ / 2;
+    float startY = yRange + 450 - startZ / 2;
     return ofVec3f(startX, startY, startZ);
 }
 
