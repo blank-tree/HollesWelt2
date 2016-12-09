@@ -1,23 +1,28 @@
 #include "Sky.h"
-#include "Settings.h"
+#include "Utils.h"
 
 void Sky::setup() {
+    intensity = 0;
+    movement = 0;
 
+    for (int i = 0; i < 3; ++i) {
+        goldness[i] = 0;
+    }
 }
 
 void Sky::update() {
-
+    goldness[0] = ofMap(intensity, 0, 0.3333, 0, 1, true);
+    goldness[1] = ofMap(intensity, 0.3334, 0.6666, 0, 1, true);
+    goldness[2] = ofMap(intensity, 0.6667, 1, 0, 1, true);
 }
 
 void Sky::draw() {
-/* Order the shapes are drawn:
+    /* Order the shapes are drawn:
      * - Define "NoFill" and set color to white
      * - Draw the shape once (for the border)
      * - Define "Fill" and set color to black
      * - Draw the shape a second time (for the fill)
      */
-
-
 
 //Draw cloud #1
 
@@ -27,7 +32,7 @@ void Sky::draw() {
     //Outer
     //Stroke
     ofNoFill();
-    ofSetColor(255);
+    ofSetColor(goldColor(goldness[0]));
 
     ofBeginShape();
     ofCurveVertex(0, 250, 100);
@@ -67,7 +72,7 @@ void Sky::draw() {
     //Middle
     //Stroke
     ofNoFill();
-    ofSetColor(255);
+    ofSetColor(goldColor(goldness[1]));
 
     ofScale(0.8, 0.75, 0.8);
     ofTranslate(0,120,100);
@@ -110,7 +115,7 @@ void Sky::draw() {
     //Inner
     //Stroke
     ofNoFill();
-    ofSetColor(255);
+    ofSetColor(goldColor(goldness[2]));
 
     ofScale(1, 0.75, 0.8);
     ofTranslate(0,120,100);
@@ -161,7 +166,7 @@ void Sky::draw() {
     //Outer
     //Stroke
     ofNoFill();
-    ofSetColor(255);
+    ofSetColor(goldColor(goldness[0]));
 
     ofScale(1, 1, 1);
 
@@ -200,7 +205,7 @@ void Sky::draw() {
     //Middle
     //Stroke
     ofNoFill();
-    ofSetColor(255);
+    ofSetColor(goldColor(goldness[1]));
 
     ofScale(1, 0.7, 0.8);
 
@@ -239,7 +244,7 @@ void Sky::draw() {
     //Inner
     //Stroke
     ofNoFill();
-    ofSetColor(255);
+    ofSetColor(goldColor(goldness[2]));
 
     ofScale(1, 0.6, 0.8);
 
@@ -288,7 +293,7 @@ void Sky::draw() {
     //Outer
     //Stroke
     ofNoFill();
-    ofSetColor(255);
+    ofSetColor(goldColor(goldness[0]));
 
     ofBeginShape();
     ofCurveVertex(0, -200, 0);
@@ -327,7 +332,7 @@ void Sky::draw() {
     //Middle
     //Stroke
     ofNoFill();
-    ofSetColor(255);
+    ofSetColor(goldColor(goldness[1]));
 
     ofScale(1, 0.7, 0.8);
 
@@ -368,7 +373,7 @@ void Sky::draw() {
     //Inner
     //Stroke
     ofNoFill();
-    ofSetColor(255);
+    ofSetColor(goldColor(goldness[2]));
 
     ofScale(1, 0.7, 0.8);
 

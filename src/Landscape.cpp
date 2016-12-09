@@ -16,9 +16,6 @@ void Landscape::update() {
     goldness[0] = ofMap(intensity, 0, 0.3333, 0, 1, true);
     goldness[1] = ofMap(intensity, 0.3334, 0.6666, 0, 1, true);
     goldness[2] = ofMap(intensity, 0.6667, 1, 0, 1, true);
-
-
-    cout<<intensity<<"\n";
     
 }
 
