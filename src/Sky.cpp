@@ -2,30 +2,15 @@
 #include "Settings.h"
 
 void Sky::setup() {
-    for (int i = 0; i < CLOUD_COUNT; i++) {
-        Cloud* c = new (Cloud);
-        
-        c->setPosition((ofGetWindowWidth() / (CLOUD_COUNT - 1) * i) - (ofGetWindowWidth() / 2), ofGetWindowHeight(), 0);
-        
-        clouds[i] = c;
-    }
+
 }
 
 void Sky::update() {
-    for (int i = 0; i < CLOUD_COUNT; i++) {
-        Cloud* c = clouds[i];
-        
-        c->goldness = goldness;
-        
-        ofVec3f pos = c->getPosition();
-        c->setPosition(pos.x, ofMap(intensity, 0, 1, ofGetWindowHeight() + 500, ofGetWindowHeight()), pos.z);
-    }
+
 }
 
 void Sky::draw() {
-    for (int i = 0; i < CLOUD_COUNT; i++) {
-        clouds[i]->draw();
-    }
+
 }
 
 void Sky::testDraw() {
@@ -42,13 +27,12 @@ void Sky::testDraw() {
 
 
 //Draw cloud #1
+
+    ofPushMatrix();
+    ofTranslate(0,800,400); //reposition cloud #1
+
     //Outer
     //Stroke
-    //reposition (control through input after)
-
-    ofTranslate(0,800,0);
-
-
     ofNoFill();
     ofSetColor(255);
 
@@ -66,6 +50,7 @@ void Sky::testDraw() {
     ofCurveVertex(0, 450, 50);
     ofCurveVertex(0, 500, 250);
     ofEndShape(	);
+
 
     //Fill
     ofFill();
@@ -172,8 +157,13 @@ void Sky::testDraw() {
     ofEndShape();
 
 
+    ofPopMatrix(); //cloud #1
+
+
 //Draw cloud #2
-    ofTranslate(0,-120,-100);
+
+    ofPushMatrix();
+    ofTranslate(0,1200,-800); //reposition cloud #2
 
     //Outer
     //Stroke
@@ -183,17 +173,17 @@ void Sky::testDraw() {
     ofScale(1, 1, 1);
 
     ofBeginShape();
-    ofCurveVertex(0, -350, -600);
-    ofCurveVertex(0, -50, -700);
-    ofCurveVertex(0, 80, -400);
-    ofCurveVertex(0, 400, 0);
-    ofCurveVertex(0, 400, 400);
-    ofCurveVertex(0, 0, 640);
-    ofCurveVertex(0, -320, 400);
-    ofCurveVertex(0, -240, 0);
-    ofCurveVertex(0, -350, -600);
-    ofCurveVertex(0, -50, -700);
-    ofCurveVertex(0, 80, -400);
+    ofCurveVertex(0, -175, -300);
+    ofCurveVertex(0, -25, -350);
+    ofCurveVertex(0, 40, -200);
+    ofCurveVertex(0, 200, 0);
+    ofCurveVertex(0, 200, 200);
+    ofCurveVertex(0, 0, 320);
+    ofCurveVertex(0, -160, 200);
+    ofCurveVertex(0, -120, 0);
+    ofCurveVertex(0, -175, -300);
+    ofCurveVertex(0, -25, -350);
+    ofCurveVertex(0, 40, -200);
     ofEndShape(	);
 
     //Fill
@@ -201,17 +191,17 @@ void Sky::testDraw() {
     ofSetColor(0);
 
     ofBeginShape();
-    ofCurveVertex(0, -350, -600);
-    ofCurveVertex(0, -50, -700);
-    ofCurveVertex(0, 80, -400);
-    ofCurveVertex(0, 400, 0);
-    ofCurveVertex(0, 400, 400);
-    ofCurveVertex(0, 0, 640);
-    ofCurveVertex(0, -320, 400);
-    ofCurveVertex(0, -240, 0);
-    ofCurveVertex(0, -350, -600);
-    ofCurveVertex(0, -50, -700);
-    ofCurveVertex(0, 80, -400);
+    ofCurveVertex(0, -175, -300);
+    ofCurveVertex(0, -25, -350);
+    ofCurveVertex(0, 40, -200);
+    ofCurveVertex(0, 200, 0);
+    ofCurveVertex(0, 200, 200);
+    ofCurveVertex(0, 0, 320);
+    ofCurveVertex(0, -160, 200);
+    ofCurveVertex(0, -120, 0);
+    ofCurveVertex(0, -175, -300);
+    ofCurveVertex(0, -25, -350);
+    ofCurveVertex(0, 40, -200);
     ofEndShape();
 
     //Middle
@@ -222,17 +212,17 @@ void Sky::testDraw() {
     ofScale(1, 0.7, 0.8);
 
     ofBeginShape();
-    ofCurveVertex(0, -400, -600);
-    ofCurveVertex(0, -100, -700);
-    ofCurveVertex(0, 80, -400);
-    ofCurveVertex(0, 400, 0);
-    ofCurveVertex(0, 400, 400);
-    ofCurveVertex(0, 0, 640);
-    ofCurveVertex(0, -320, 400);
-    ofCurveVertex(0, -240, 0);
-    ofCurveVertex(0, -400, -600);
-    ofCurveVertex(0, -100, -700);
-    ofCurveVertex(0, 80, -400);
+    ofCurveVertex(0, -175, -300);
+    ofCurveVertex(0, -25, -350);
+    ofCurveVertex(0, 40, -200);
+    ofCurveVertex(0, 200, 0);
+    ofCurveVertex(0, 200, 200);
+    ofCurveVertex(0, 0, 320);
+    ofCurveVertex(0, -160, 200);
+    ofCurveVertex(0, -120, 0);
+    ofCurveVertex(0, -175, -300);
+    ofCurveVertex(0, -25, -350);
+    ofCurveVertex(0, 40, -200);
     ofEndShape(	);
 
     //Fill
@@ -240,17 +230,17 @@ void Sky::testDraw() {
     ofSetColor(0);
 
     ofBeginShape();
-    ofCurveVertex(0, -400, -600);
-    ofCurveVertex(0, -100, -700);
-    ofCurveVertex(0, 80, -400);
-    ofCurveVertex(0, 400, 0);
-    ofCurveVertex(0, 400, 400);
-    ofCurveVertex(0, 0, 640);
-    ofCurveVertex(0, -320, 400);
-    ofCurveVertex(0, -240, 0);
-    ofCurveVertex(0, -400, -600);
-    ofCurveVertex(0, -100, -700);
-    ofCurveVertex(0, 80, -400);
+    ofCurveVertex(0, -175, -300);
+    ofCurveVertex(0, -25, -350);
+    ofCurveVertex(0, 40, -200);
+    ofCurveVertex(0, 200, 0);
+    ofCurveVertex(0, 200, 200);
+    ofCurveVertex(0, 0, 320);
+    ofCurveVertex(0, -160, 200);
+    ofCurveVertex(0, -120, 0);
+    ofCurveVertex(0, -175, -300);
+    ofCurveVertex(0, -25, -350);
+    ofCurveVertex(0, 40, -200);
     ofEndShape();
 
     //Inner
@@ -261,17 +251,17 @@ void Sky::testDraw() {
     ofScale(1, 0.6, 0.8);
 
     ofBeginShape();
-    ofCurveVertex(0, -450, -600);
-    ofCurveVertex(0, -200, -700);
-    ofCurveVertex(0, 20, -400);
-    ofCurveVertex(0, 400, 0);
-    ofCurveVertex(0, 400, 400);
-    ofCurveVertex(0, 0, 640);
-    ofCurveVertex(0, -320, 400);
-    ofCurveVertex(0, -240, 0);
-    ofCurveVertex(0, -450, -600);
-    ofCurveVertex(0, -200, -700);
-    ofCurveVertex(0, 20, -400);
+    ofCurveVertex(0, -175, -300);
+    ofCurveVertex(0, -25, -350);
+    ofCurveVertex(0, 40, -200);
+    ofCurveVertex(0, 200, 0);
+    ofCurveVertex(0, 200, 200);
+    ofCurveVertex(0, 0, 320);
+    ofCurveVertex(0, -160, 200);
+    ofCurveVertex(0, -120, 0);
+    ofCurveVertex(0, -175, -300);
+    ofCurveVertex(0, -25, -350);
+    ofCurveVertex(0, 40, -200);
     ofEndShape(	);
 
     //Fill
@@ -279,29 +269,33 @@ void Sky::testDraw() {
     ofSetColor(0);
 
     ofBeginShape();
-    ofCurveVertex(0, -450, -600);
-    ofCurveVertex(0, -200, -700);
-    ofCurveVertex(0, 20, -400);
-    ofCurveVertex(0, 400, 0);
-    ofCurveVertex(0, 400, 400);
-    ofCurveVertex(0, 0, 640);
-    ofCurveVertex(0, -320, 400);
-    ofCurveVertex(0, -240, 0);
-    ofCurveVertex(0, -450, -600);
-    ofCurveVertex(0, -200, -700);
-    ofCurveVertex(0, 20, -400);
+    ofCurveVertex(0, -175, -300);
+    ofCurveVertex(0, -25, -350);
+    ofCurveVertex(0, 40, -200);
+    ofCurveVertex(0, 200, 0);
+    ofCurveVertex(0, 200, 200);
+    ofCurveVertex(0, 0, 320);
+    ofCurveVertex(0, -160, 200);
+    ofCurveVertex(0, -120, 0);
+    ofCurveVertex(0, -175, -300);
+    ofCurveVertex(0, -25, -350);
+    ofCurveVertex(0, 40, -200);
     ofEndShape();
 
 
+    ofPopMatrix(); //cloud #2
 
-//Draw cloud #2
+
+//Draw cloud #3
+
+    ofPushMatrix();
+    ofTranslate(0,1300,0); //reposition cloud #3
+    ofScale(1, 1.1, 1.1);
 
     //Outer
     //Stroke
     ofNoFill();
     ofSetColor(255);
-
-    ofScale(1, 4, 3);
 
     ofBeginShape();
     ofCurveVertex(0, -200, 0);
@@ -419,6 +413,7 @@ void Sky::testDraw() {
     ofCurveVertex(0, -80, -300);
     ofEndShape();
 
+    ofPopMatrix(); //cloud #3
 
 
 }

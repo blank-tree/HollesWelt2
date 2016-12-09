@@ -2,7 +2,6 @@
 
 #include "ofMain.h"
 
-#include "Cloud.h"
 #include "Settings.h"
 
 class Sky {
@@ -19,5 +18,5 @@ public:
     void testDraw();
     
 private:
-    Cloud* clouds[CLOUD_COUNT];
+
 };
