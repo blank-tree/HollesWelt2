@@ -46,8 +46,6 @@ void Statehandler::updateShake() {
     // TODO: Map force to snow rate.
     // TODO: Map angles to wind.
     // TODO: Map total to goldness (snow flakes, clouds, landscapes).
-    // TODO: Change to CLIMAX on success.
-    // TODO: Change to RESET on fail.
     
     // set spawn intensity & drop speed & goldness
     float totalForce = (pillow->forceLeft + pillow->forceRight) / 2;
@@ -76,7 +74,6 @@ void Statehandler::updateShake() {
 //        counter = 0;
         return;
     }
-    
 }
 
 void Statehandler::updateClimax() {
