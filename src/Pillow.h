@@ -15,6 +15,8 @@ public:
     
     void setup();
     void update();
+
+    int averageForce();
     
 private:
     string readString();

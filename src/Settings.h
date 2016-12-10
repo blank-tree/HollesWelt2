@@ -11,8 +11,6 @@
 #define FLAKE_NORMAL_DROP_SPEED 1.5 // per frame
 #define FLAKE_DAMPING_RATE 0.1 // per frame
 
-#define CLOUD_COUNT 5
-
 #define COUNTER_CLIMAX 1500 // frames
 
 #define FINISH_TIME 250

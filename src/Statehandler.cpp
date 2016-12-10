@@ -1,18 +1,13 @@
 #include "Statehandler.h"
 
 void Statehandler::setup() {
-    state = IDLE;
+    state = DEFAULT;
 }
 
 void Statehandler::update() {
-    totalAngle = (pillow->angleLeft + pillow->angleRight) / 2;
-    
     switch(state) {
-        case IDLE:
-            updateIdle();
-            break;
-        case SHAKE:
-            updateShake();
+        case DEFAULT:
+            updateDefault();
             break;
         case CLIMAX:
             updateClimax();
@@ -26,34 +21,16 @@ void Statehandler::update() {
     }
 }
 
-void Statehandler::updateIdle() {
-    // set spawn intensity
-    float totalForce = (pillow->forceLeft + pillow->forceRight) / 2;
-    snowfall->spawnRate = ofClamp(totalForce / 100.0, 0.025, 1);
-    
-    // move on if angle has been reached
-    if(totalAngle > 90) {
-        state = SHAKE;
-        return;
-    }
-    
-    if (counter != 0) {
-        counter--;
-    }
-}
-
-void Statehandler::updateShake() {
-    // TODO: Map force to snow rate.
+void Statehandler::updateDefault() {
     // TODO: Map angles to wind.
     // TODO: Map total to goldness (snow flakes, clouds, landscapes).
-    
-    // set spawn intensity & drop speed & goldness
-    float totalForce = (pillow->forceLeft + pillow->forceRight) / 2;
-    snowfall->spawnRate = totalForce / 10.0;
-    snowfall->dropSpeed = totalForce / 10.0;
+
+    // set spawn intensity
+    snowfall->spawnRate = ofClamp(pillow->averageForce() / 10.0, 0.05, 10);
+    snowfall->dropSpeed = ofClamp(pillow->averageForce() / 10.0, 0, 10);
     
     // increase counter
-    counter += totalForce / 10;
+    counter += pillow->averageForce() / 10;
     float intensity = ofMap(counter, 0, COUNTER_CLIMAX, 0, 1);
     
     // map goldness
@@ -66,12 +43,6 @@ void Statehandler::updateShake() {
     if(counter > COUNTER_CLIMAX) {
         state = CLIMAX;
         counter = 0;
-        return;
-    }
-    
-    if (totalAngle < 90) {
-        state = IDLE;
-//        counter = 0;
         return;
     }
 }
@@ -98,6 +69,7 @@ void Statehandler::updateFinish() {
     
     if(counter > FINISH_TIME) {
         state = RESET;
+        counter = 0;
         return;
     }
 }
@@ -111,18 +83,15 @@ void Statehandler::updateReset() {
     soundscape->intensity = 0;
     
     counter = 0;
-    state = IDLE;
+    state = DEFAULT;
 }
 
 string Statehandler::debugString() {
     string str;
     
     switch(state) {
-        case IDLE:
-            str = "Idle";
-            break;
-        case SHAKE:
-            str = "Shake";
+        case DEFAULT:
+            str = "Default";
             break;
         case CLIMAX:
             str = "Climax";

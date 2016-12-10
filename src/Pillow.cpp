@@ -73,3 +73,7 @@ void Pillow::update() {
         }
     }
 }
+
+int Pillow::averageForce() {
+    return (forceLeft + forceRight) / 2;
+}
