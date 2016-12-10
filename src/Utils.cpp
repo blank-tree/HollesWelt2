@@ -1,11 +1,3 @@
-//
-//  Utils.cpp
-//  HollesWelt
-//
-//  Created by Joël Gähwiler on 01.12.16.
-//
-//
-
 #include "Utils.h"
 
 ofColor _gold = ofColor(255, 157, 0);

@@ -1,11 +1,3 @@
-//
-//  Pillow.cpp
-//  HollesWelt
-//
-//  Created by Joël Gähwiler on 30.11.16.
-//
-//
-
 #include "Pillow.h"
 
 void Pillow::setup() {

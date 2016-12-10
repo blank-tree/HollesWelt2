@@ -1,15 +1,6 @@
-//
-//  SnowSphere.cpp
-//  HollesWelt
-//
-//  Created by Fernando Obieta on 29.11.16.
-//
-
 #include "Snowflake.h"
 #include "Settings.h"
 #include "Utils.h"
-
-// PUBLIC ---------------------------------
 
 void Snowflake::setup(float dropSpeed, float goldness) {
     this->goldness = goldness;
@@ -40,9 +31,7 @@ void Snowflake::update(ofVec3f wind) {
 //    } else if(movement.y > FLAKE_NORMAL_DROP_SPEED * -1) {
 //        movement.y = FLAKE_NORMAL_DROP_SPEED * -1;
 //    }
-    
-    
-    
+
     // deactivate snowflakes when reached the endY point
     if (getY() < this->endY) {
         active = false;
@@ -83,8 +72,6 @@ void Snowflake::draw() {
 void Snowflake::reset() {
     active = false;
 }
-
-// PRIVATE ---------------------------------
 
 ofVec3f Snowflake::decideStart() {
     float startX = (float)((rand() % xRange) - xRange / 2);

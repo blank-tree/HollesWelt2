@@ -1,11 +1,3 @@
-//
-//  Utils.hpp
-//  HollesWelt
-//
-//  Created by Joël Gähwiler on 01.12.16.
-//
-//
-
 #pragma once
 
 #include "ofMain.h"
