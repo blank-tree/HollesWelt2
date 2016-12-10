@@ -60,7 +60,7 @@ void Snowflake::draw() {
     
     ofNoFill();
     ofSetColor(c);
-    ofSetLineWidth(1);
+    ofSetLineWidth(1.5);
     
     ofVec3f pos = getPosition();
     
