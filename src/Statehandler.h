@@ -6,7 +6,7 @@
 #include "Pillow.h"
 #include "Soundscape.h"
 
-enum States {DEFAULT, CLIMAX, FINISH, RESET};
+enum States {DEFAULT, FINISH, RESET};
 
 class Statehandler {
 
@@ -25,7 +25,6 @@ private:
     float counter;
     
     void updateDefault();
-    void updateClimax();
     void updateFinish();
     void updateReset();
 };

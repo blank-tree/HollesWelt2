@@ -9,9 +9,6 @@ void Statehandler::update() {
         case DEFAULT:
             updateDefault();
             break;
-        case CLIMAX:
-            updateClimax();
-            break;
         case FINISH:
             updateFinish();
             break;
@@ -31,7 +28,7 @@ void Statehandler::updateDefault() {
     
     // increase counter
     counter += pillow->averageForce() / 10;
-    float intensity = ofMap(counter, 0, COUNTER_CLIMAX, 0, 1);
+    float intensity = ofMap(counter, 0, COUNTER_FINISH, 0, 1);
     
     // map goldness
     snowfall->goldness = intensity;
@@ -40,22 +37,7 @@ void Statehandler::updateDefault() {
     soundscape->intensity = intensity;
     
     // move on if climax has been reached
-    if(counter > COUNTER_CLIMAX) {
-        state = CLIMAX;
-        counter = 0;
-        return;
-    }
-}
-
-void Statehandler::updateClimax() {
-    soundscape->intensity = 1;
-
-    // animate flash
-    if(counter < 1) {
-        counter += FLASH_SPEED_IN;
-    } else if(counter < 2) {
-        counter += FLASH_SPEED_OUT;
-    } else {
+    if(counter > COUNTER_FINISH) {
         state = FINISH;
         counter = 0;
         return;
@@ -92,9 +74,6 @@ string Statehandler::debugString() {
     switch(state) {
         case DEFAULT:
             str = "Default";
-            break;
-        case CLIMAX:
-            str = "Climax";
             break;
         case FINISH:
             str = "Finish";
