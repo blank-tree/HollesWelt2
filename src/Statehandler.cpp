@@ -5,13 +5,7 @@ void Statehandler::setup() {
 }
 
 void Statehandler::update() {
-    
     totalAngle = (pillow->angleLeft + pillow->angleRight) / 2;
-    
-    // set sky intensity
-    if (state == IDLE || state == SHAKE) {
-        sky->movement = ofClamp(totalAngle / 90.0, 0, 1);
-    }
     
     switch(state) {
         case IDLE:
@@ -54,11 +48,6 @@ void Statehandler::updateShake() {
     // TODO: Map total to goldness (snow flakes, clouds, landscapes).
     // TODO: Change to CLIMAX on success.
     // TODO: Change to RESET on fail.
-    
-    // fix sky intensity
-//    sky->intensity = 1;
-    landscape->intensity = ofClamp(ofMap(counter, 0, COUNTER_CLIMAX, 0, 1), 0, 1);
-    sky->intensity = ofClamp(ofMap(counter, 0, COUNTER_CLIMAX, 0, 1), 0, 1);
     
     // set spawn intensity & drop speed & goldness
     float totalForce = (pillow->forceLeft + pillow->forceRight) / 2;
@@ -124,9 +113,6 @@ void Statehandler::updateReset() {
     snowfall->spawnRate = 0;
     snowfall->dropSpeed = 0;
     snowfall->goldness = 0;
-    
-    sky->intensity = 0;
-    landscape->intensity = 0;
     
     flash->intensity = 0;
     flash->blackness = 0;

@@ -8,18 +8,14 @@ void App::setup(){
     
     statehandler.snowfall = &snowfall;
     statehandler.pillow = &pillow;
-    statehandler.sky = &sky;
     statehandler.flash = &flash;
     statehandler.soundscape = &soundscape;
-    statehandler.landscape = &landscape;
     
     statehandler.setup();
     
     pillow.setup();
     snowfall.setup();
-    sky.setup();
     soundscape.setup();
-    landscape.setup();
 }
 
 void App::update(){
@@ -28,10 +24,7 @@ void App::update(){
     statehandler.update();
     
     snowfall.update();
-    sky.update();
     soundscape.update();
-    landscape.update();
-    
 }
 
 void App::draw(){
@@ -51,8 +44,6 @@ void App::draw(){
     
     // draw world
     snowfall.draw();
-    sky.draw();
-    landscape.draw();
     
     // finish cam
     if(debug) {
