@@ -9,7 +9,7 @@ void Snowflake::setup(float dropSpeed, float goldness) {
 
     // set range
     int xRange = ofGetWindowWidth() * 2;
-    int yRange = (int)(ofGetWindowHeight() * 1.5);
+    int yRange = (int)(ofGetWindowHeight() * 1.1);
     int zRange = 1000;
 
     // calculate position
@@ -57,7 +57,7 @@ void Snowflake::draw() {
     }
     
     ofColor c = goldColor(goldness);
-    
+
     ofNoFill();
     ofSetColor(c);
     ofSetLineWidth(1.5);
@@ -67,11 +67,14 @@ void Snowflake::draw() {
     ofPushMatrix();
     ofRotateY(90);
     ofTranslate(pos.x, pos.y, pos.z);
-    
-    ofDrawBezier(0, 0, 2.8, 0, 5, 2.2, 5, 5);
-    ofDrawBezier(5, 5, 5, 7.8, 2.8, 16.4, 0, 16.4);
-    ofDrawBezier(0, 16.4, -2.8, 16.4, -5, 7.7, -5, 5);
-    ofDrawBezier(-5, 5, -5, 2.2, -2.8, 0, 0, 0);
+
+    ofBeginShape();
+    ofVertex(0, 0);
+    ofBezierVertex(2.8, 0, 5, 2.2, 5, 5);
+    ofBezierVertex(5, 7.8, 2.8, 16.4, 0, 16.4);
+    ofBezierVertex(-2.8, 16.4, -5, 7.7, -5, 5);
+    ofBezierVertex(-5, 2.2, -2.8, 0, 0, 0);
+    ofEndShape();
     
     ofPopMatrix();
 }
