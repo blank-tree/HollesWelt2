@@ -6,23 +6,25 @@ void Snowflake::setup(float dropSpeed, float goldness) {
     this->goldness = goldness;
     
     active = true;
-    
+
+    // set range
     int xRange = ofGetWindowWidth() * 2;
     int yRange = (int)(ofGetWindowHeight() * 1.5);
     int zRange = 1000;
 
+    // calculate position
     float startX = (float)((rand() % xRange) - xRange / 2);
     float startZ = (float)((rand() % zRange) - zRange / 2);
     float startY = yRange + 450 - startZ / 2;
-    
     this->setPosition(ofVec3f(startX, startY, startZ));
 
-    float targetX = (ofRandom(1) - 0.5) / 1;
-    float targetY = dropSpeed * -1 < -FLAKE_NORMAL_DROP_SPEED ? dropSpeed * -1 : -FLAKE_NORMAL_DROP_SPEED;
-    float targetZ = (ofRandom(1) - 0.5) / 1;
-
+    // calculate movement
+    float targetX = (float)(ofRandom(1) - 0.5);
+    float targetY = (float)(dropSpeed * -1 < -FLAKE_NORMAL_DROP_SPEED ? dropSpeed * -1 : -FLAKE_NORMAL_DROP_SPEED);
+    float targetZ = (float)(ofRandom(1) - 0.5);
     movement = ofVec3f(targetX, targetY, targetZ);
 
+    // calculate dead point
     endY = -300 + this->getZ() / 2;
     
     this->update(ofVec3f(0, 0, 0));
@@ -34,11 +36,11 @@ void Snowflake::update(ofVec3f wind) {
     }
 
     // slow down snow flakes and enforce normal drop speed
-//    if(movement.y < FLAKE_NORMAL_DROP_SPEED * -1) {
-//        movement.y = movement.y + FLAKE_DAMPING_RATE;
-//    } else if(movement.y > FLAKE_NORMAL_DROP_SPEED * -1) {
-//        movement.y = FLAKE_NORMAL_DROP_SPEED * -1;
-//    }
+    if(movement.y < FLAKE_NORMAL_DROP_SPEED * -1) {
+        movement.y = movement.y + FLAKE_DAMPING_RATE;
+    } else if(movement.y > FLAKE_NORMAL_DROP_SPEED * -1) {
+        movement.y = FLAKE_NORMAL_DROP_SPEED * -1;
+    }
 
     // deactivate snowflakes when reached the endY point
     if (getY() < this->endY) {
