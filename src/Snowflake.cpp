@@ -7,15 +7,23 @@ void Snowflake::setup(float dropSpeed, float goldness) {
     
     active = true;
     
-    xRange = ofGetWindowWidth();
-    yRange = ofGetWindowHeight();
-    zRange = ofGetWindowWidth();
+    int xRange = ofGetWindowWidth();
+    int yRange = ofGetWindowHeight();
+    int zRange = ofGetWindowWidth();
+
+    float startX = (float)((rand() % xRange) - xRange / 2);
+    float startZ = (float)((rand() % zRange) - zRange / 2);
+    float startY = yRange + 450 - startZ / 2;
     
-    this->setPosition(decideStart());
-    movement = this->decideMovement(dropSpeed);
-    
-    increasedSpeed = ofMap(dropSpeed, 0, 10, 0, 1);
-    endY = decideEndY();
+    this->setPosition(ofVec3f(startX, startY, startZ));
+
+    float targetX = (ofRandom(1) - 0.5) / 1;
+    float targetY = dropSpeed * -1 < -FLAKE_NORMAL_DROP_SPEED ? dropSpeed * -1 : -FLAKE_NORMAL_DROP_SPEED;
+    float targetZ = (ofRandom(1) - 0.5) / 1;
+
+    movement = ofVec3f(targetX, targetY, targetZ);
+
+    endY = -300 + this->getZ() / 2;
     
     this->update(ofVec3f(0, 0, 0));
 }
@@ -24,7 +32,7 @@ void Snowflake::update(ofVec3f wind) {
     if(!active) {
         return;
     }
-    
+
     // slow down snow flakes and enforce normal drop speed
 //    if(movement.y < FLAKE_NORMAL_DROP_SPEED * -1) {
 //        movement.y = movement.y + FLAKE_DAMPING_RATE;
@@ -38,10 +46,7 @@ void Snowflake::update(ofVec3f wind) {
         return;
     }
     
-    float newYPosition = this->getY() + movement.y;
-    
     this->setPosition(this->getPosition() + movement + wind);
-
 }
 
 void Snowflake::draw() {
@@ -71,22 +76,4 @@ void Snowflake::draw() {
 
 void Snowflake::reset() {
     active = false;
-}
-
-ofVec3f Snowflake::decideStart() {
-    float startX = (float)((rand() % xRange) - xRange / 2);
-    float startZ = (float)((rand() % zRange) - zRange / 2);
-    float startY = yRange + 450 - startZ / 2;
-    return ofVec3f(startX, startY, startZ);
-}
-
-ofVec3f Snowflake::decideMovement(float dropSpeed) {
-    float targetX = (ofRandom(1) - 0.5) / 1;
-    float targetY = dropSpeed * -1 < -FLAKE_NORMAL_DROP_SPEED ? dropSpeed * -1 : -FLAKE_NORMAL_DROP_SPEED;
-    float targetZ = (ofRandom(1) - 0.5) / 1;
-    return ofVec3f(targetX, targetY, targetZ);
-}
-
-float Snowflake::decideEndY() {
-    return -300 + this->getZ() / 2;
 }
