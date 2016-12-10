@@ -68,13 +68,7 @@ void Snowflake::draw() {
     ofRotateY(90);
     ofTranslate(pos.x, pos.y, pos.z);
 
-    ofBeginShape();
-    ofVertex(0, 0);
-    ofBezierVertex(2.8, 0, 5, 2.2, 5, 5);
-    ofBezierVertex(5, 7.8, 2.8, 16.4, 0, 16.4);
-    ofBezierVertex(-2.8, 16.4, -5, 7.7, -5, 5);
-    ofBezierVertex(-5, 2.2, -2.8, 0, 0, 0);
-    ofEndShape();
+    snowflakePath()->draw();
     
     ofPopMatrix();
 }
