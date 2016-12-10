@@ -7,9 +7,9 @@ void Snowflake::setup(float dropSpeed, float goldness) {
     
     active = true;
     
-    int xRange = ofGetWindowWidth();
-    int yRange = ofGetWindowHeight();
-    int zRange = ofGetWindowWidth();
+    int xRange = ofGetWindowWidth() * 2;
+    int yRange = (int)(ofGetWindowHeight() * 1.5);
+    int zRange = 1000;
 
     float startX = (float)((rand() % xRange) - xRange / 2);
     float startZ = (float)((rand() % zRange) - zRange / 2);
