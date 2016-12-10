@@ -5,7 +5,8 @@ void App::setup(){
     
     mainCam.setPosition(1500, ofGetWindowWidth() / 3, 0);
     mainCam.setOrientation(ofVec3f(0, 90, 0));
-    
+
+    statehandler.cam = &mainCam;
     statehandler.snowfall = &snowfall;
     statehandler.pillow = &pillow;
     statehandler.soundscape = &soundscape;

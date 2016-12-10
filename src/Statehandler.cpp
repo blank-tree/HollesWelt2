@@ -1,4 +1,5 @@
 #include "Statehandler.h"
+#include "Utils.h"
 
 void Statehandler::setup() {
     state = DEFAULT;
@@ -48,6 +49,11 @@ void Statehandler::updateFinish() {
     counter++;
     
     soundscape->intensity = 1 - (counter / FINISH_TIME);
+
+    // calculate cam movement
+    float camX = easeInQuart(counter / FINISH_TIME, 1500, -3000, 1);
+    ofVec3f pos = cam->getPosition();
+    cam->setPosition(camX, pos.y, pos.z);
     
     if(counter > FINISH_TIME) {
         state = RESET;
@@ -63,6 +69,9 @@ void Statehandler::updateReset() {
     snowfall->goldness = 0;
 
     soundscape->intensity = 0;
+
+    ofVec3f pos = cam->getPosition();
+    cam->setPosition(1500, pos.y, pos.z);
     
     counter = 0;
     state = DEFAULT;

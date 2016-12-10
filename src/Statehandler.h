@@ -11,6 +11,7 @@ enum States {DEFAULT, FINISH, RESET};
 class Statehandler {
 
 public:
+    ofCamera* cam;
     Snowfall* snowfall;
     Pillow* pillow;
     Soundscape* soundscape;

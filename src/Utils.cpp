@@ -16,3 +16,8 @@ ofColor interpolateColor(ofColor from, ofColor to, float t) {
 ofColor goldColor(float t) {
     return interpolateColor(_white, _gold, t);
 }
+
+float easeInQuart(float t, float b, float c, float d) {
+    t /= d;
+    return c*t*t*t*t + b;
+}
