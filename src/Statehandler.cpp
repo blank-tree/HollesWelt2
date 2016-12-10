@@ -20,9 +20,6 @@ void Statehandler::update() {
 }
 
 void Statehandler::updateDefault() {
-    // TODO: Map angles to wind.
-    // TODO: Map total to goldness (snow flakes, clouds, landscapes).
-
     // set spawn intensity
     snowfall->spawnRate = ofClamp(pillow->averageForce() / 10.0, 0.05, 10);
     snowfall->dropSpeed = ofClamp(pillow->averageForce() / 10.0, 0, 20);
