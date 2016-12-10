@@ -85,11 +85,8 @@ void Statehandler::updateClimax() {
     // animate flash
     if(counter < 1) {
         counter += FLASH_SPEED_IN;
-        flash->intensity = counter;
     } else if(counter < 2) {
         counter += FLASH_SPEED_OUT;
-        flash->blackness = 1;
-        flash->intensity = 1 - (counter - 1);
     } else {
         state = FINISH;
         counter = 0;
@@ -113,9 +110,7 @@ void Statehandler::updateReset() {
     snowfall->spawnRate = 0;
     snowfall->dropSpeed = 0;
     snowfall->goldness = 0;
-    
-    flash->intensity = 0;
-    flash->blackness = 0;
+
     soundscape->intensity = 0;
     
     counter = 0;

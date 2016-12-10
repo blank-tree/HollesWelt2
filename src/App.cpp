@@ -8,7 +8,6 @@ void App::setup(){
     
     statehandler.snowfall = &snowfall;
     statehandler.pillow = &pillow;
-    statehandler.flash = &flash;
     statehandler.soundscape = &soundscape;
     
     statehandler.setup();
@@ -51,9 +50,6 @@ void App::draw(){
     } else {
         mainCam.end();
     }
-    
-    // draw flash
-    flash.draw();
     
     // draw info
     if(info) {

@@ -4,7 +4,6 @@
 
 #include "Snowfall.h"
 #include "Pillow.h"
-#include "Flash.h"
 #include "Soundscape.h"
 
 enum States {IDLE, SHAKE, CLIMAX, FINISH, RESET};
@@ -14,7 +13,6 @@ class Statehandler {
 public:
     Snowfall* snowfall;
     Pillow* pillow;
-    Flash* flash;
     Soundscape* soundscape;
     
     void setup();

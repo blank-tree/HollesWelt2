@@ -11,7 +11,6 @@
 		52A2F20C1DEF4A9E006B2F4E /* Snowfall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52A2F2081DEF4A9E006B2F4E /* Snowfall.cpp */; };
 		52A2F20D1DEF4A9E006B2F4E /* Snowflake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52A2F20A1DEF4A9E006B2F4E /* Snowflake.cpp */; };
 		52A2F2111DEF55F3006B2F4E /* Pillow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52A2F20F1DEF55F3006B2F4E /* Pillow.cpp */; };
-		52A2F2181DEF933C006B2F4E /* Flash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52A2F2161DEF933C006B2F4E /* Flash.cpp */; };
 		C4AE2D7E1DF026C100D46C51 /* Soundscape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C4AE2D7C1DF026C100D46C51 /* Soundscape.cpp */; };
 		C4BF36AA1DEF4FD300FDF472 /* Statehandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C4BF36A81DEF4FD300FDF472 /* Statehandler.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -58,8 +57,6 @@
 		52A2F20B1DEF4A9E006B2F4E /* Snowflake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Snowflake.h; sourceTree = "<group>"; };
 		52A2F20F1DEF55F3006B2F4E /* Pillow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pillow.cpp; sourceTree = "<group>"; };
 		52A2F2101DEF55F3006B2F4E /* Pillow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pillow.h; sourceTree = "<group>"; };
-		52A2F2161DEF933C006B2F4E /* Flash.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Flash.cpp; sourceTree = "<group>"; };
-		52A2F2171DEF933C006B2F4E /* Flash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flash.h; sourceTree = "<group>"; };
 		C4AE2D7C1DF026C100D46C51 /* Soundscape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Soundscape.cpp; sourceTree = "<group>"; };
 		C4AE2D7D1DF026C100D46C51 /* Soundscape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Soundscape.h; sourceTree = "<group>"; };
 		C4BF36A81DEF4FD300FDF472 /* Statehandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Statehandler.cpp; sourceTree = "<group>"; };
@@ -136,8 +133,6 @@
 				52A2F20A1DEF4A9E006B2F4E /* Snowflake.cpp */,
 				52A2F2101DEF55F3006B2F4E /* Pillow.h */,
 				52A2F20F1DEF55F3006B2F4E /* Pillow.cpp */,
-				52A2F2171DEF933C006B2F4E /* Flash.h */,
-				52A2F2161DEF933C006B2F4E /* Flash.cpp */,
 				526E0C921DF01EA00039481F /* Utils.h */,
 				526E0C911DF01EA00039481F /* Utils.cpp */,
 				C4AE2D7D1DF026C100D46C51 /* Soundscape.h */,
@@ -249,7 +244,6 @@
 				E4B69E210A3A1BDC003C02F2 /* App.cpp in Sources */,
 				526E0C931DF01EA00039481F /* Utils.cpp in Sources */,
 				C4BF36AA1DEF4FD300FDF472 /* Statehandler.cpp in Sources */,
-				52A2F2181DEF933C006B2F4E /* Flash.cpp in Sources */,
 				52A2F20C1DEF4A9E006B2F4E /* Snowfall.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

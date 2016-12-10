@@ -19,7 +19,6 @@ class App : public ofBaseApp{
     
         Pillow pillow;
         Snowfall snowfall;
-        Flash flash;
         Soundscape soundscape;
     
 		void setup();
