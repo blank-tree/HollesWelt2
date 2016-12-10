@@ -77,3 +77,7 @@ void Pillow::update() {
 int Pillow::averageForce() {
     return (forceLeft + forceRight) / 2;
 }
+
+int Pillow::tilt() {
+    return angleLeft - angleRight;
+}

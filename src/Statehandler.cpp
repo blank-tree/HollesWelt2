@@ -26,6 +26,7 @@ void Statehandler::updateDefault() {
     // set spawn intensity
     snowfall->spawnRate = ofClamp(pillow->averageForce() / 10.0, 0.05, 10);
     snowfall->dropSpeed = ofClamp(pillow->averageForce() / 10.0, 0, 20);
+    snowfall->wind = ofVec3f(pillow->tilt() / 25, abs(pillow->tilt()) / -50, 0 );
     
     // increase counter
     counter += pillow->averageForce() / 10;

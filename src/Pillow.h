@@ -17,6 +17,7 @@ public:
     void update();
 
     int averageForce();
+    int tilt();
     
 private:
     string readString();
