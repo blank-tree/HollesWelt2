@@ -83,3 +83,7 @@ int Pillow::averageForce() {
 int Pillow::tilt() {
     return angleLeft - angleRight;
 }
+
+int Pillow::betterTilt() {
+    return (int)ofMap(averageForce(), 0, 100, tilt(), 0);
+}
