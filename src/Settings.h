@@ -5,7 +5,7 @@
 #define FLAKE_COUNT 10000
 
 #define FLAKE_NORMAL_DROP_SPEED 1.5 // per frame
-#define FLAKE_DAMPING_RATE 0.05 // per frame
+#define FLAKE_DAMPING_RATE 0.07 // per frame
 
 #define COUNTER_FINISH 1000 // average force per frames
 
