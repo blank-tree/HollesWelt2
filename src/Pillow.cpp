@@ -1,12 +1,14 @@
 #include "Pillow.h"
 
 void Pillow::setup() {
+    static string prefix = "cu.usbmodem";
+
     serial.listDevices();
     
     vector <ofSerialDeviceInfo> deviceList = serial.getDeviceList();
     
     for(ofSerialDeviceInfo d: deviceList) {
-        if(d.getDeviceName() == "cu.usbmodem142121") {
+        if(d.getDeviceName().compare(0, prefix.size(), prefix) == 0) {
             serial.setup(d.getDeviceID(), 9600);
             connected = true;
             return;
