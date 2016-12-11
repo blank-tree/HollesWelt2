@@ -58,9 +58,8 @@ void Snowflake::draw() {
     
     ofColor c = goldColor(goldness);
 
-    ofNoFill();
-    ofSetColor(c);
-    ofSetLineWidth(1.5);
+    ofPath* path = snowflakePath();
+    path->setColor(c);
     
     ofVec3f pos = getPosition();
     
@@ -68,7 +67,7 @@ void Snowflake::draw() {
     ofRotateY(90);
     ofTranslate(pos.x, pos.y, pos.z);
 
-    snowflakePath()->draw();
+    path->draw();
     
     ofPopMatrix();
 }

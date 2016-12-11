@@ -27,6 +27,8 @@ ofPath* _cachedPath;
 ofPath* snowflakePath() {
     if(_cachedPath == nil) {
         _cachedPath = new ofPath();
+        _cachedPath->setFilled(false);
+        _cachedPath->setStrokeWidth(1.5);
 
         _cachedPath->bezierTo(2.8, 0, 5, 2.2, 5, 5);
         _cachedPath->bezierTo(5, 7.8, 2.8, 16.4, 0, 16.4);
