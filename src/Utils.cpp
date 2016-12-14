@@ -18,6 +18,9 @@ ofColor goldColor(float t) {
 }
 
 float easeInQuart(float t, float b, float c, float d) {
+    // http://gizma.com/easing/#quad1
+    // http://easings.net
+
     t /= d;
     return c*t*t*t*t + b;
 }

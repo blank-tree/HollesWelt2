@@ -55,9 +55,6 @@ void Snowflake::setup(float dropSpeed, float goldness) {
 
     // calculate dead point
     endY = -300 + this->getZ() / 2;
-
-
-    this->update(ofVec3f(0, 0, 0));
 }
 
 void Snowflake::update(ofVec3f wind) {

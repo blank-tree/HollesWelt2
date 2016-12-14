@@ -13,9 +13,7 @@ class Snowflake : public ofNode{
     
     private:
         bool active;
-
         float endY;
-    
         ofVec3f movement;
         float goldness;
 };
