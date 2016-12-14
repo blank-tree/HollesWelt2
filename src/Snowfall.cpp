@@ -7,25 +7,28 @@ void Snowfall::setup() {
 }
 
 void Snowfall::update() {
-    // spawn new flake if counter has been reached
+    // increment counter
     counter += spawnRate;
+
+    // spawn new flake if counter has been reached
     while(counter >= 1) {
+        // reset on overflow
         if(next >= FLAKE_COUNT) {
             next = 0;
         }
-        
+
+        // get next flake
         Snowflake* s = flakes[next];
         s->setup(dropSpeed, goldness);
-        
+
+        // set counters
         next++;
         counter -= 1;
     }
     
     // update all flakes
     for(int i = 0; i < FLAKE_COUNT; i++) {
-        Snowflake* s = flakes[i];
-        
-        s->update(wind);
+        flakes[i]->update(wind);
     }
 }
 
