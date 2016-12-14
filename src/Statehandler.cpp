@@ -6,6 +6,7 @@ void Statehandler::setup() {
 }
 
 void Statehandler::update() {
+    // call sub handlers
     switch(state) {
         case DEFAULT:
             updateDefault();
@@ -20,25 +21,34 @@ void Statehandler::update() {
 }
 
 void Statehandler::updateDefault() {
-    int tilt = pillow->betterTilt();
+    // decrease counter
+    counter -= COUNTER_DECREMENT;
 
-    // set spawn intensity
-    snowfall->spawnRate = ofClamp(pillow->averageForce() / 10.0, 0.05, 10);
-    snowfall->dropSpeed = ofClamp(pillow->averageForce() / 7.5, 0, 15);
+    // check underflow
+    if(counter < 0) {
+        counter = 0;
+    }
+
+    // get tilt
+    int tilt = pillow->smoothTilt();
+
+    // update snowfall
+    snowfall->spawnRate = ofClamp((float)(pillow->averageForce() / 10.0), 0.05, 10);
+    snowfall->dropSpeed = ofClamp((float)(pillow->averageForce() / 7.5), 0, 15);
     snowfall->wind = ofVec3f(tilt / 25, abs(tilt) / -50, 0);
     
     // increase counter
     counter += pillow->averageForce() / 10;
-    float intensity = ofMap(counter, 0, COUNTER_FINISH, 0, 1);
+
+    // calculate intensity
+    float intensity = ofMap(counter, 0, CLIMAX_TOTAL_FORCE, 0, 1);
     
-    // map goldness
+    // set goldness and intensity
     snowfall->goldness = intensity;
-    
-    // map soundscape
     soundscape->intensity = intensity;
     
     // move on if climax has been reached
-    if(counter > COUNTER_FINISH) {
+    if(counter > CLIMAX_TOTAL_FORCE) {
         state = FINISH;
         counter = 0;
         return;
@@ -46,16 +56,21 @@ void Statehandler::updateDefault() {
 }
 
 void Statehandler::updateFinish() {
+    // increment counter
     counter++;
-    
-    soundscape->intensity = 1 - (counter / FINISH_TIME);
+
+    // calculate time
+    float t = counter / FINISH_FRAMES;
+
+    // decrease soundscape
+    soundscape->intensity = 1 - t;
 
     // calculate cam movement
-    float camX = easeInQuart(counter / FINISH_TIME, 1500, -3000, 1);
-    ofVec3f pos = cam->getPosition();
-    cam->setPosition(camX, pos.y, pos.z);
-    
-    if(counter > FINISH_TIME) {
+    float x = easeInQuart(t, 1500, -3000, 1);
+    cam->setPosition(x, cam->getY(), cam->getZ());
+
+    // change state if reached finish
+    if(counter > FINISH_FRAMES) {
         state = RESET;
         counter = 0;
         return;
@@ -63,16 +78,14 @@ void Statehandler::updateFinish() {
 }
 
 void Statehandler::updateReset() {
+    // reset snowfall and soundscape
     snowfall->reset();
-    snowfall->spawnRate = 0;
-    snowfall->dropSpeed = 0;
-    snowfall->goldness = 0;
+    soundscape->reset();
 
-    soundscape->intensity = 0;
+    // set camera position
+    cam->setPosition(1500, cam->getY(), cam->getZ());
 
-    ofVec3f pos = cam->getPosition();
-    cam->setPosition(1500, pos.y, pos.z);
-    
+    // change state
     counter = 0;
     state = DEFAULT;
 }

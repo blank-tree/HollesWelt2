@@ -3,9 +3,11 @@
 #define DEBUG_RATE 10
 
 #define FLAKE_COUNT 10000
-#define FLAKE_MIN_DROP_SPEED 1.5 // per frame
-#define FLAKE_DAMPING_RATE 0.07 // per frame
+#define FLAKE_MIN_DROP_SPEED 1.5
+#define FLAKE_DAMPING_RATE 0.07
 
-#define COUNTER_FINISH 1000 // average force per frames
+#define COUNTER_DECREMENT 1
 
-#define FINISH_TIME 240 // frames
+#define CLIMAX_TOTAL_FORCE 1000
+
+#define FINISH_FRAMES 240

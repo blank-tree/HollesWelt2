@@ -42,4 +42,8 @@ void Snowfall::reset() {
     for(int i = 0; i < FLAKE_COUNT; i++) {
         flakes[i]->reset();
     }
+
+    spawnRate = 0;
+    dropSpeed = 0;
+    goldness = 0;
 }

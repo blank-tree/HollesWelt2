@@ -18,7 +18,7 @@ public:
 
     int averageForce();
     int tilt();
-    int betterTilt();
+    int smoothTilt();
     
 private:
     string readString();

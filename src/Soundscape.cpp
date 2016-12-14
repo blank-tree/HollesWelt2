@@ -19,3 +19,7 @@ void Soundscape::update() {
     white.setVolume(1 - intensity);
     gold.setVolume(intensity);
 }
+
+void Soundscape::reset() {
+    intensity = 0;
+}

@@ -10,6 +10,7 @@ public:
     
     void setup();
     void update();
+    void reset();
     
 private:
     ofSoundPlayer white;
