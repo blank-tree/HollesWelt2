@@ -5,21 +5,17 @@ void App::setup(){
     
     mainCam.setPosition(1500, ofGetWindowWidth() / 3, 0);
     mainCam.setOrientation(ofVec3f(0, 90, 0));
-    
+
+    statehandler.cam = &mainCam;
     statehandler.snowfall = &snowfall;
     statehandler.pillow = &pillow;
-    statehandler.sky = &sky;
-    statehandler.flash = &flash;
     statehandler.soundscape = &soundscape;
-    statehandler.landscape = &landscape;
     
     statehandler.setup();
     
     pillow.setup();
     snowfall.setup();
-    sky.setup();
     soundscape.setup();
-    landscape.setup();
 }
 
 void App::update(){
@@ -28,10 +24,7 @@ void App::update(){
     statehandler.update();
     
     snowfall.update();
-    sky.update();
     soundscape.update();
-    landscape.update();
-    
 }
 
 void App::draw(){
@@ -51,8 +44,6 @@ void App::draw(){
     
     // draw world
     snowfall.draw();
-    sky.draw();
-    landscape.draw();
     
     // finish cam
     if(debug) {
@@ -60,9 +51,6 @@ void App::draw(){
     } else {
         mainCam.end();
     }
-    
-    // draw flash
-    flash.draw();
     
     // draw info
     if(info) {

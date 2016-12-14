@@ -1,27 +1,14 @@
 #include "Statehandler.h"
+#include "Utils.h"
 
 void Statehandler::setup() {
-    state = IDLE;
+    state = DEFAULT;
 }
 
 void Statehandler::update() {
-    
-    totalAngle = (pillow->angleLeft + pillow->angleRight) / 2;
-    
-    // set sky intensity
-    if (state == IDLE || state == SHAKE) {
-        sky->movement = ofClamp(totalAngle / 90.0, 0, 1);
-    }
-    
     switch(state) {
-        case IDLE:
-            updateIdle();
-            break;
-        case SHAKE:
-            updateShake();
-            break;
-        case CLIMAX:
-            updateClimax();
+        case DEFAULT:
+            updateDefault();
             break;
         case FINISH:
             updateFinish();
@@ -32,42 +19,17 @@ void Statehandler::update() {
     }
 }
 
-void Statehandler::updateIdle() {
-    // set spawn intensity
-    float totalForce = (pillow->forceLeft + pillow->forceRight) / 2;
-    snowfall->spawnRate = ofClamp(totalForce / 100.0, 0.025, 1);
-    
-    // move on if angle has been reached
-    if(totalAngle > 90) {
-        state = SHAKE;
-        return;
-    }
-    
-    if (counter != 0) {
-        counter--;
-    }
-}
+void Statehandler::updateDefault() {
+    int tilt = pillow->betterTilt();
 
-void Statehandler::updateShake() {
-    // TODO: Map force to snow rate.
-    // TODO: Map angles to wind.
-    // TODO: Map total to goldness (snow flakes, clouds, landscapes).
-    // TODO: Change to CLIMAX on success.
-    // TODO: Change to RESET on fail.
-    
-    // fix sky intensity
-//    sky->intensity = 1;
-    landscape->intensity = ofClamp(ofMap(counter, 0, COUNTER_CLIMAX, 0, 1), 0, 1);
-    sky->intensity = ofClamp(ofMap(counter, 0, COUNTER_CLIMAX, 0, 1), 0, 1);
-    
-    // set spawn intensity & drop speed & goldness
-    float totalForce = (pillow->forceLeft + pillow->forceRight) / 2;
-    snowfall->spawnRate = totalForce / 10.0;
-    snowfall->dropSpeed = totalForce / 10.0;
+    // set spawn intensity
+    snowfall->spawnRate = ofClamp(pillow->averageForce() / 10.0, 0.05, 10);
+    snowfall->dropSpeed = ofClamp(pillow->averageForce() / 7.5, 0, 15);
+    snowfall->wind = ofVec3f(tilt / 25, abs(tilt) / -50, 0);
     
     // increase counter
-    counter += totalForce / 10;
-    float intensity = ofMap(counter, 0, COUNTER_CLIMAX, 0, 1);
+    counter += pillow->averageForce() / 10;
+    float intensity = ofMap(counter, 0, COUNTER_FINISH, 0, 1);
     
     // map goldness
     snowfall->goldness = intensity;
@@ -76,32 +38,7 @@ void Statehandler::updateShake() {
     soundscape->intensity = intensity;
     
     // move on if climax has been reached
-    if(counter > COUNTER_CLIMAX) {
-        state = CLIMAX;
-        counter = 0;
-        return;
-    }
-    
-    if (totalAngle < 90) {
-        state = IDLE;
-//        counter = 0;
-        return;
-    }
-    
-}
-
-void Statehandler::updateClimax() {
-    soundscape->intensity = 1;
-
-    // animate flash
-    if(counter < 1) {
-        counter += FLASH_SPEED_IN;
-        flash->intensity = counter;
-    } else if(counter < 2) {
-        counter += FLASH_SPEED_OUT;
-        flash->blackness = 1;
-        flash->intensity = 1 - (counter - 1);
-    } else {
+    if(counter > COUNTER_FINISH) {
         state = FINISH;
         counter = 0;
         return;
@@ -112,9 +49,15 @@ void Statehandler::updateFinish() {
     counter++;
     
     soundscape->intensity = 1 - (counter / FINISH_TIME);
+
+    // calculate cam movement
+    float camX = easeInQuart(counter / FINISH_TIME, 1500, -3000, 1);
+    ofVec3f pos = cam->getPosition();
+    cam->setPosition(camX, pos.y, pos.z);
     
     if(counter > FINISH_TIME) {
         state = RESET;
+        counter = 0;
         return;
     }
 }
@@ -124,30 +67,22 @@ void Statehandler::updateReset() {
     snowfall->spawnRate = 0;
     snowfall->dropSpeed = 0;
     snowfall->goldness = 0;
-    
-    sky->intensity = 0;
-    landscape->intensity = 0;
-    
-    flash->intensity = 0;
-    flash->blackness = 0;
+
     soundscape->intensity = 0;
+
+    ofVec3f pos = cam->getPosition();
+    cam->setPosition(1500, pos.y, pos.z);
     
     counter = 0;
-    state = IDLE;
+    state = DEFAULT;
 }
 
 string Statehandler::debugString() {
     string str;
     
     switch(state) {
-        case IDLE:
-            str = "Idle";
-            break;
-        case SHAKE:
-            str = "Shake";
-            break;
-        case CLIMAX:
-            str = "Climax";
+        case DEFAULT:
+            str = "Default";
             break;
         case FINISH:
             str = "Finish";

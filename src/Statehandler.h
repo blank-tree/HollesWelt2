@@ -4,22 +4,17 @@
 
 #include "Snowfall.h"
 #include "Pillow.h"
-#include "Sky.h"
-#include "Flash.h"
 #include "Soundscape.h"
-#include "Landscape.h"
 
-enum States {IDLE, SHAKE, CLIMAX, FINISH, RESET};
+enum States {DEFAULT, FINISH, RESET};
 
 class Statehandler {
 
 public:
+    ofCamera* cam;
     Snowfall* snowfall;
     Pillow* pillow;
-    Sky* sky;
-    Flash* flash;
     Soundscape* soundscape;
-    Landscape* landscape;
     
     void setup();
     void update();
@@ -29,11 +24,8 @@ public:
 private:
     States state;
     float counter;
-    float totalAngle;
     
-    void updateIdle();
-    void updateShake();
-    void updateClimax();
+    void updateDefault();
     void updateFinish();
     void updateReset();
 };

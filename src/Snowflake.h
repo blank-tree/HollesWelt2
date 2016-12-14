@@ -11,18 +11,9 @@ class Snowflake : public ofNode{
     
     private:
         bool active;
-    
-        int xRange;
-        int yRange;
-        int zRange;
-    
-        float increasedSpeed;
+
         float endY;
     
         ofVec3f movement;
         float goldness;
-    
-        ofVec3f decideStart();
-        ofVec3f decideMovement(float);
-        float decideEndY();
 };

@@ -15,6 +15,10 @@ public:
     
     void setup();
     void update();
+
+    int averageForce();
+    int tilt();
+    int betterTilt();
     
 private:
     string readString();

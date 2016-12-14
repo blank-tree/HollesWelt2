@@ -1,11 +1,3 @@
-//
-//  Utils.cpp
-//  HollesWelt
-//
-//  Created by Joël Gähwiler on 01.12.16.
-//
-//
-
 #include "Utils.h"
 
 ofColor _gold = ofColor(255, 157, 0);
@@ -23,4 +15,27 @@ ofColor interpolateColor(ofColor from, ofColor to, float t) {
 
 ofColor goldColor(float t) {
     return interpolateColor(_white, _gold, t);
+}
+
+float easeInQuart(float t, float b, float c, float d) {
+    t /= d;
+    return c*t*t*t*t + b;
+}
+
+ofPath* _cachedPath;
+
+ofPath* snowflakePath() {
+    if(_cachedPath == nil) {
+        _cachedPath = new ofPath();
+        _cachedPath->setFilled(false);
+        _cachedPath->setStrokeWidth(1.5);
+
+        _cachedPath->bezierTo(2.8, 0, 5, 2.2, 5, 5);
+        _cachedPath->bezierTo(5, 7.8, 2.8, 16.4, 0, 16.4);
+        _cachedPath->bezierTo(-2.8, 16.4, -5, 7.7, -5, 5);
+        _cachedPath->bezierTo(-5, 2.2, -2.8, 0, 0, 0);
+        _cachedPath->close();
+    }
+
+    return _cachedPath;
 }

@@ -1,20 +1,14 @@
-//
-//  Pillow.cpp
-//  HollesWelt
-//
-//  Created by Joël Gähwiler on 30.11.16.
-//
-//
-
 #include "Pillow.h"
 
 void Pillow::setup() {
+    static string prefix = "cu.usbmodem";
+
     serial.listDevices();
     
     vector <ofSerialDeviceInfo> deviceList = serial.getDeviceList();
     
     for(ofSerialDeviceInfo d: deviceList) {
-        if(d.getDeviceName() == "cu.usbmodem142121") {
+        if(d.getDeviceName().compare(0, prefix.size(), prefix) == 0) {
             serial.setup(d.getDeviceID(), 9600);
             connected = true;
             return;
@@ -80,4 +74,16 @@ void Pillow::update() {
                 break;
         }
     }
+}
+
+int Pillow::averageForce() {
+    return (forceLeft + forceRight) / 2;
+}
+
+int Pillow::tilt() {
+    return angleLeft - angleRight;
+}
+
+int Pillow::betterTilt() {
+    return (int)ofMap(averageForce(), 0, 100, tilt(), 0);
 }
