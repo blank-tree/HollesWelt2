@@ -97,5 +97,5 @@ int Pillow::tilt() {
 }
 
 int Pillow::smoothTilt() {
-    return (int)ofMap(averageForce(), 0, 100, tilt(), 0);
+    return (int)ofMap(averageForce(), 0, 50, tilt(), 0, true);
 }
