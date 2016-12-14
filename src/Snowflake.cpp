@@ -2,12 +2,41 @@
 #include "Settings.h"
 #include "Utils.h"
 
+void drawSnowflake(ofColor color) {
+    // use a static path that can be reused
+    static ofPath* path;
+
+    // create path if missing
+    if(path == nil) {
+        path = new ofPath();
+        path->setFilled(false);
+        path->setStrokeWidth(1.5);
+
+        path->bezierTo(2.8, 0, 5, 2.2, 5, 5);
+        path->bezierTo(5, 7.8, 2.8, 16.4, 0, 16.4);
+        path->bezierTo(-2.8, 16.4, -5, 7.7, -5, 5);
+        path->bezierTo(-5, 2.2, -2.8, 0, 0, 0);
+        path->close();
+    }
+
+    // set color and draw path
+    path->setColor(color);
+    path->draw();
+}
+
 void Snowflake::setup(float dropSpeed, float goldness) {
-    this->goldness = goldness;
-    
+    // set active
     active = true;
 
-    // set range
+    // set goldness
+    this->goldness = goldness;
+
+    // enforce min drop speed
+    if(dropSpeed < FLAKE_MIN_DROP_SPEED) {
+        dropSpeed = FLAKE_MIN_DROP_SPEED;
+    }
+
+    // define range
     int xRange = ofGetWindowWidth() * 2;
     int yRange = (int)(ofGetWindowHeight() * 1.1);
     int zRange = 1000;
@@ -20,26 +49,26 @@ void Snowflake::setup(float dropSpeed, float goldness) {
 
     // calculate movement
     float targetX = (float)(ofRandom(1) - 0.5);
-    float targetY = (float)(dropSpeed * -1 < -FLAKE_NORMAL_DROP_SPEED ? dropSpeed * -1 : -FLAKE_NORMAL_DROP_SPEED);
+    float targetY = dropSpeed * -1;
     float targetZ = (float)(ofRandom(1) - 0.5);
     movement = ofVec3f(targetX, targetY, targetZ);
 
     // calculate dead point
     endY = -300 + this->getZ() / 2;
-    
+
+
     this->update(ofVec3f(0, 0, 0));
 }
 
 void Snowflake::update(ofVec3f wind) {
+    // skip inactive flakes
     if(!active) {
         return;
     }
 
-    // slow down snow flakes and enforce normal drop speed
-    if(movement.y < FLAKE_NORMAL_DROP_SPEED * -1) {
-        movement.y = movement.y + FLAKE_DAMPING_RATE;
-    } else if(movement.y > FLAKE_NORMAL_DROP_SPEED * -1) {
-        movement.y = FLAKE_NORMAL_DROP_SPEED * -1;
+    // slow down movement
+    if(movement.y + FLAKE_DAMPING_RATE < FLAKE_MIN_DROP_SPEED * -1) {
+        movement.y += FLAKE_DAMPING_RATE;
     }
 
     // deactivate snowflakes when reached the endY point
@@ -47,28 +76,26 @@ void Snowflake::update(ofVec3f wind) {
         active = false;
         return;
     }
-    
+
+    // move flake and apply global wind
     this->setPosition(this->getPosition() + movement + wind);
 }
 
 void Snowflake::draw() {
+    // skip inactive flakes
     if(!active) {
         return;
     }
-    
-    ofColor c = goldColor(goldness);
 
-    ofPath* path = snowflakePath();
-    path->setColor(c);
-    
-    ofVec3f pos = getPosition();
-    
+    // prepare matrix
     ofPushMatrix();
     ofRotateY(90);
-    ofTranslate(pos.x, pos.y, pos.z);
+    ofTranslate(getX(), getY(), getZ());
 
-    path->draw();
-    
+    // draw snowflake
+    drawSnowflake(goldColor(goldness));
+
+    // finish matrix
     ofPopMatrix();
 }
 

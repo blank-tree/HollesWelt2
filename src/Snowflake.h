@@ -2,6 +2,8 @@
 
 #include "ofMain.h"
 
+void drawSnowflake(ofColor);
+
 class Snowflake : public ofNode{
     public:
         void setup(float dropSpeed, float goldness);

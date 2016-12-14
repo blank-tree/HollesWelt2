@@ -9,5 +9,3 @@ ofColor goldColor(float t);
 // http://gizma.com/easing/#quad1
 // http://easings.net
 float easeInQuart(float t, float b, float c, float d);
-
-ofPath* snowflakePath();
