@@ -12,6 +12,6 @@ public:
     void update();
     
 private:
-    ofSoundPlayer idle;
+    ofSoundPlayer white;
     ofSoundPlayer gold;
 };
