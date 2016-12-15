@@ -24,7 +24,7 @@ void Pillow::setup() {
 string Pillow::readString() {
     static string str;
     stringstream ss;
-    int ch;
+    char ch;
 
     // read until zero
     while ((ch=serial.readByte()) > 0 && ch != '\n') {
