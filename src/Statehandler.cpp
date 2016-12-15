@@ -22,12 +22,12 @@ void Statehandler::update() {
 
 void Statehandler::updateDefault() {
     // decrease counter
-    counter -= COUNTER_DECREMENT;
-
-    // check underflow
-    if(counter < 0) {
-        counter = 0;
+    if(counter - COUNTER_DECREMENT > 0) {
+        counter -= COUNTER_DECREMENT;
     }
+
+    // increase counter
+    counter += pillow->averageForce() / 10;
 
     // get tilt
     int tilt = pillow->smoothTilt();
@@ -36,16 +36,15 @@ void Statehandler::updateDefault() {
     snowfall->spawnRate = ofClamp((float)(pillow->averageForce() / 10.0), 0.05, 10);
     snowfall->dropSpeed = ofClamp((float)(pillow->averageForce() / 7.5), 0, 15);
     snowfall->wind = ofVec3f(tilt / 25, abs(tilt) / -50, 0);
-    
-    // increase counter
-    counter += pillow->averageForce() / 10;
 
-    // calculate intensity
-    float intensity = ofMap(counter, 0, CLIMAX_TOTAL_FORCE, 0, 1);
+    // calculate goldness & volume
+    float goldness = ofMap(counter, 0, CLIMAX_TOTAL_FORCE, 0, 1);
+    float volume = ofMap(counter, 0, CLIMAX_TOTAL_FORCE / 10, 0.25, 1, true);
     
-    // set goldness and intensity
-    snowfall->goldness = intensity;
-    soundscape->intensity = intensity;
+    // set goldness and goldness
+    snowfall->goldness = goldness;
+    soundscape->goldness = goldness;
+    soundscape->volume = volume;
     
     // move on if climax has been reached
     if(counter > CLIMAX_TOTAL_FORCE) {
@@ -63,7 +62,8 @@ void Statehandler::updateFinish() {
     float t = counter / FINISH_FRAMES;
 
     // decrease soundscape
-    soundscape->intensity = 1 - t;
+    soundscape->goldness = 1 - t;
+    soundscape->volume = ofMap(t, 0, 1, 1, 0.25);
 
     // calculate cam movement
     float x = easeInQuart(t, 1500, -3000, 1);

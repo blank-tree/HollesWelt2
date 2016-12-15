@@ -16,10 +16,10 @@ void Soundscape::setup() {
 
 void Soundscape::update() {
     // set volumes
-    white.setVolume(1 - intensity);
-    gold.setVolume(intensity);
+    white.setVolume((1 - goldness) * volume);
+    gold.setVolume(goldness * volume);
 }
 
 void Soundscape::reset() {
-    intensity = 0;
+    goldness = 0;
 }
