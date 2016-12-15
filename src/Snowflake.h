@@ -12,8 +12,8 @@ class Snowflake : public ofNode{
         void reset();
     
     private:
-        bool active;
-        float endY;
-        ofVec3f movement;
-        float goldness;
+        bool active = false;
+        float endY = 0;
+        ofVec3f movement = {0, 0, 0};
+        float goldness = 0;
 };

@@ -22,8 +22,8 @@ public:
     string debugString();
     
 private:
-    States state;
-    float counter;
+    States state = DEFAULT;
+    float counter = 0;
     
     void updateDefault();
     void updateFinish();

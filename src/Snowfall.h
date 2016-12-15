@@ -8,10 +8,10 @@
 class Snowfall {
     
 public:
-    float spawnRate;
-    float goldness;
-    float dropSpeed;
-    ofVec3f wind;
+    float spawnRate = 0;
+    float goldness = 0;
+    float dropSpeed = 0;
+    ofVec3f wind = {0, 0, 0};
     
     void setup();
     void update();

@@ -6,7 +6,7 @@
 class Soundscape {
     
 public:
-    float intensity;
+    float intensity = 0;
     
     void setup();
     void update();
